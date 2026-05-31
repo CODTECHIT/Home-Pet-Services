@@ -150,13 +150,28 @@ function Hero() {
 }
 
 function ValueBar() {
-  const items = ["Licensed Vet Team","No-Stress Home Visits","Same-Day Emergency","Transparent Pricing","WhatsApp Bookings"];
+  const items = [
+    "Licensed Vet Team",
+    "No-Stress Home Visits",
+    "Same-Day Emergency",
+    "Transparent Pricing",
+    "WhatsApp Bookings",
+    "24 / 7 Support",
+    "Home Visits",
+    "Pet First Approach",
+  ];
+  // Duplicate for seamless loop
+  const doubled = [...items, ...items];
   return (
-    <div className="border-y border-border bg-foreground text-background">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-8 gap-y-2 text-[10px] sm:text-xs uppercase tracking-[0.14em] sm:tracking-[0.18em] font-semibold text-background/80">
-        {items.map((i) => (
-          <span key={i} className="inline-flex items-center gap-1.5 sm:gap-2">
-            <CheckCircle2 className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-brand-orange shrink-0" />{i}
+    <div className="border-y border-border bg-foreground text-background overflow-hidden">
+      <div className="flex animate-marquee whitespace-nowrap py-3 sm:py-4">
+        {doubled.map((item, i) => (
+          <span
+            key={i}
+            className="inline-flex items-center gap-2 mx-6 text-[11px] sm:text-xs uppercase tracking-[0.18em] font-semibold text-background/80 shrink-0"
+          >
+            <CheckCircle2 className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-brand-orange shrink-0" />
+            {item}
           </span>
         ))}
       </div>
@@ -167,7 +182,6 @@ function ValueBar() {
 function Services() {
   return (
     <section className="relative py-12 lg:py-16">
-      <Amoeba variant={2} color="oklch(0.95 0.04 15 / 0.5)" className="absolute -top-10 left-1/2 -translate-x-1/2 h-64 w-64 pointer-events-none" />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto">
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-blue">What we offer</p>
