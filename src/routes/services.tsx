@@ -1,0 +1,85 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight, CheckCircle2, Phone } from "lucide-react";
+import { SiteLayout } from "@/components/site/SiteLayout";
+import { Amoeba } from "@/components/site/Amoeba";
+import { ServiceIcon } from "@/components/site/ServiceIcon";
+import { WhatsAppIcon } from "@/components/site/Header";
+import { SERVICES, colorMap } from "@/data/services";
+import heroPets from "@/assets/hero-pets.png";
+import dogCta from "@/assets/dog-cta.png";
+
+export const Route = createFileRoute("/services")({
+  head: () => ({
+    meta: [
+      { title: "Services — Home Pet Services Hyderabad" },
+      { name: "description", content: "Vaccinations, emergency care, deworming, IV therapy, post-op care, blood work and more — all delivered to your home in Hyderabad." },
+      { property: "og:title", content: "Pet Care Services at Home — Hyderabad" },
+      { property: "og:description", content: "Our complete menu of veterinary services delivered at your doorstep." },
+    ],
+  }),
+  component: ServicesPage,
+});
+
+function ServicesPage() {
+  return (
+    <SiteLayout>
+      <section className="relative overflow-hidden gradient-hero py-12 lg:py-16">
+        <Amoeba variant={2} color="oklch(0.58 0.18 245 / 0.12)" className="absolute -top-20 -left-20 h-96 w-96 animate-spin-slow" />
+        <Amoeba variant={3} color="oklch(0.72 0.17 55 / 0.15)" className="absolute -bottom-20 -right-20 h-96 w-96" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-10 items-center">
+          <div className="lg:col-span-7">
+            <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-blue">Our services</p>
+            <h1 className="mt-3 font-display text-4xl sm:text-5xl lg:text-6xl font-black text-balance">Complete veterinary care — <span className="italic text-brand-blue">delivered home</span></h1>
+            <p className="mt-5 text-base sm:text-lg text-muted-foreground max-w-xl">Ten core services covering every stage of your pet's health, from routine wellness to emergency intervention.</p>
+          </div>
+          <div className="lg:col-span-5 relative flex justify-center">
+            <div className="absolute inset-0 grid place-items-center">
+              <Amoeba variant={1} color="oklch(0.58 0.18 245 / 0.2)" className="h-72 w-72 animate-float" />
+            </div>
+            <img src={heroPets} alt="Happy dog and cat" width={1024} height={1024} className="relative z-10 w-full max-w-[320px] sm:max-w-[360px] drop-shadow-2xl" />
+          </div>
+        </div>
+      </section>
+
+      <section className="py-10 lg:py-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {SERVICES.map((s) => {
+              const c = colorMap[s.color];
+              return (
+                <article key={s.slug} className="group relative rounded-3xl bg-card p-7 ring-1 ring-border hover:shadow-pop hover:-translate-y-1 transition-all">
+                  <div className={`h-14 w-14 rounded-2xl ${c.bg} grid place-items-center ring-4 ${c.ring}`}>
+                    <ServiceIcon name={s.icon} className={`h-7 w-7 ${c.text}`} />
+                  </div>
+                  <h3 className="mt-5 font-display text-xl font-bold">{s.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                  <ul className="mt-4 space-y-1.5 text-xs text-muted-foreground">
+                    <li className="flex gap-2"><CheckCircle2 className={`h-4 w-4 ${c.text} shrink-0`} />At-home appointments</li>
+                    <li className="flex gap-2"><CheckCircle2 className={`h-4 w-4 ${c.text} shrink-0`} />Licensed veterinary care</li>
+                    <li className="flex gap-2"><CheckCircle2 className={`h-4 w-4 ${c.text} shrink-0`} />Transparent pricing</li>
+                  </ul>
+                </article>
+              );
+            })}
+          </div>
+
+          <div className="mt-10 lg:mt-12 rounded-[2rem] gradient-cta text-white p-8 sm:p-10 grid lg:grid-cols-12 gap-6 items-center overflow-hidden relative">
+            <Amoeba variant={4} color="rgba(255,255,255,0.1)" className="absolute -top-16 -right-16 h-64 w-64" />
+            <Amoeba variant={1} color="rgba(255,255,255,0.06)" className="absolute -bottom-16 -left-16 h-64 w-64" />
+            <div className="relative lg:col-span-3 flex justify-center">
+              <img src={dogCta} alt="Happy puppy" width={1024} height={1024} className="w-36 drop-shadow-xl animate-float" />
+            </div>
+            <div className="relative lg:col-span-5 text-center lg:text-left">
+              <h2 className="font-display text-3xl font-black">Not sure which service you need?</h2>
+              <p className="mt-2 text-white/85 text-sm">Tell us about your pet — we'll recommend the right care.</p>
+            </div>
+            <div className="relative lg:col-span-4 flex flex-wrap gap-3 justify-center lg:justify-end">
+              <a href="https://wa.me/919985356507?text=Hi,%20we%20need%20the%20services" className="inline-flex items-center gap-2 rounded-full bg-white/15 backdrop-blur ring-1 ring-white/30 px-5 py-3 font-semibold hover:bg-white/25 transition"><WhatsAppIcon className="h-4 w-4" /> WhatsApp us</a>
+              <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-white text-foreground px-5 py-3 font-semibold hover:scale-105 transition">Contact us <ArrowRight className="h-4 w-4" /></Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </SiteLayout>
+  );
+}

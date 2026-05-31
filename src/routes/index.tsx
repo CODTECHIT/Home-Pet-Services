@@ -1,0 +1,345 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Phone, ArrowRight, Clock, ShieldCheck, Heart, Home as HomeIcon, Sparkles, Star, MapPin, CheckCircle2 } from "lucide-react";
+import { SiteLayout } from "@/components/site/SiteLayout";
+import { Amoeba, PawPattern } from "@/components/site/Amoeba";
+import { WhatsAppIcon } from "@/components/site/Header";
+import { ServiceIcon } from "@/components/site/ServiceIcon";
+import { SERVICES, colorMap } from "@/data/services";
+
+import heroPets from "@/assets/hero-pets.png";
+import dogPortrait from "@/assets/dog-portrait.png";
+import dogCta from "@/assets/dog-cta.png";
+import avatar1 from "@/assets/avatar-1.png";
+import avatar2 from "@/assets/avatar-2.png";
+import avatar3 from "@/assets/avatar-3.png";
+
+export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Home Pet Services — Trusted Veterinary Care at Home in Hyderabad" },
+      { name: "description", content: "Compassionate home veterinary care in Hyderabad: vaccinations, emergency visits, deworming, IV therapy and post-op care delivered to your doorstep." },
+      { property: "og:title", content: "Home Pet Services — Veterinary Care at Home in Hyderabad" },
+      { property: "og:description", content: "Trusted pet home services across Hyderabad. Vaccinations, emergencies, IV therapy and more — by caring professionals." },
+    ],
+  }),
+  component: HomePage,
+});
+
+const AREAS = ["Jubilee Hills","Banjara Hills","Gachibowli","Financial District","Kondapur","Madhapur","Manikonda","Kokapet","Nallagandla","Tellapur","Hitech City","Kukatpally","Miyapur","Begumpet","Secunderabad","+ All over Hyderabad"];
+
+function HomePage() {
+  return (
+    <SiteLayout>
+      <Hero />
+      <ValueBar />
+      <Services />
+      <WhyUs />
+      <Stats />
+      <Testimonials />
+      <Areas />
+      <FinalCta />
+    </SiteLayout>
+  );
+}
+
+function Hero() {
+  return (
+    <section className="relative overflow-hidden gradient-hero">
+      <Amoeba variant={1} color="oklch(0.85 0.14 90 / 0.4)" className="absolute -top-24 -left-32 h-[520px] w-[520px] animate-spin-slow" />
+      <Amoeba variant={2} color="oklch(0.68 0.16 155 / 0.18)" className="absolute top-40 -right-32 h-[460px] w-[460px]" />
+      <PawPattern className="absolute top-12 right-1/3 h-10 w-10 text-brand-blue/20 rotate-12" />
+      <PawPattern className="absolute bottom-24 left-1/4 h-8 w-8 text-brand-orange/30 -rotate-12" />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-16 lg:pt-14 lg:pb-20 grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <span className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-brand-blue ring-1 ring-brand-blue/15">
+            <Sparkles className="h-3.5 w-3.5" /> Premium home pet care · Hyderabad
+          </span>
+          <h1 className="mt-5 font-display text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.02] text-balance text-foreground">
+            Your pet. <br />
+            <span className="text-brand-blue italic">Our priority.</span>
+          </h1>
+          <p className="mt-5 text-lg text-muted-foreground max-w-lg text-balance">
+            Vaccinations, emergencies, deworming, IV therapy and post-operative care — delivered with compassion to your doorstep, because they deserve the best, always.
+          </p>
+          <div className="mt-7 flex flex-wrap gap-3">
+            <a href="https://wa.me/919985356507?text=Hi,%20we%20need%20the%20services" className="group inline-flex items-center gap-2.5 rounded-full bg-whatsapp text-white px-6 py-3.5 font-semibold shadow-pop hover:scale-[1.02] transition">
+              <WhatsAppIcon className="h-5 w-5" />
+              <span className="flex flex-col items-start leading-tight"><span>Chat on WhatsApp</span><span className="text-[11px] font-normal opacity-90">99853 56507</span></span>
+            </a>
+            <a href="tel:+919985356507" className="group inline-flex items-center gap-2.5 rounded-full bg-white px-6 py-3.5 font-semibold text-foreground shadow-soft ring-1 ring-border hover:scale-[1.02] transition">
+              <span className="grid h-8 w-8 place-items-center rounded-full bg-brand-blue text-white"><Phone className="h-4 w-4" /></span>
+              <span className="flex flex-col items-start leading-tight"><span>Call now</span><span className="text-[11px] font-normal text-muted-foreground">99853 56507</span></span>
+            </a>
+          </div>
+
+          <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-lg">
+            {[
+              { Icon: Clock, label: "24 / 7", sub: "Support" },
+              { Icon: HomeIcon, label: "Home", sub: "Visits" },
+              { Icon: ShieldCheck, label: "Safe &", sub: "Trusted" },
+              { Icon: Heart, label: "Pet First", sub: "Approach" },
+            ].map(({ Icon, label, sub }) => (
+              <div key={label} className="text-center">
+                <div className="mx-auto h-12 w-12 grid place-items-center rounded-2xl bg-white shadow-soft ring-1 ring-border">
+                  <Icon className="h-5 w-5 text-brand-blue" />
+                </div>
+                <div className="mt-2 text-sm font-semibold text-foreground">{label}</div>
+                <div className="text-xs text-muted-foreground">{sub}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="relative">
+          <Amoeba variant={3} color="oklch(0.58 0.18 245 / 0.12)" className="absolute inset-0 h-full w-full scale-110" />
+          <Amoeba variant={4} color="oklch(0.72 0.17 55 / 0.18)" className="absolute -bottom-10 -right-10 h-72 w-72" />
+          <div className="relative">
+            <img src={heroPets} alt="Happy golden retriever and tabby cat" width={1024} height={1024} className="relative z-10 w-full max-w-md mx-auto drop-shadow-2xl" />
+          </div>
+          <div className="absolute bottom-6 left-2 lg:-left-6 z-20 rounded-3xl bg-white px-5 py-4 shadow-pop ring-1 ring-border max-w-[260px]">
+            <div className="flex items-center gap-3">
+              <div className="h-11 w-11 grid place-items-center rounded-2xl bg-brand-blue-soft">
+                <svg viewBox="0 0 24 24" className="h-6 w-6 text-brand-blue" fill="currentColor"><circle cx="12" cy="14" r="3.5"/><circle cx="6" cy="9" r="2"/><circle cx="18" cy="9" r="2"/><circle cx="9" cy="5" r="1.6"/><circle cx="15" cy="5" r="1.6"/></svg>
+              </div>
+              <div>
+                <p className="text-sm font-bold leading-tight">Care that feels like family.</p>
+                <p className="text-xs text-muted-foreground">Right at your doorstep.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ValueBar() {
+  const items = ["Licensed Vet Team","No-Stress Home Visits","Same-Day Emergency","Transparent Pricing","WhatsApp Bookings"];
+  return (
+    <div className="border-y border-border bg-foreground text-background">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-xs uppercase tracking-[0.18em] font-semibold text-background/80">
+        {items.map((i) => (
+          <span key={i} className="inline-flex items-center gap-2"><CheckCircle2 className="h-3.5 w-3.5 text-brand-orange" />{i}</span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function Services() {
+  return (
+    <section className="relative py-12 lg:py-16">
+      <Amoeba variant={2} color="oklch(0.95 0.04 15 / 0.5)" className="absolute -top-10 left-1/2 -translate-x-1/2 h-72 w-72" />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto">
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-blue">What we offer</p>
+          <h2 className="mt-3 font-display text-4xl sm:text-5xl font-black text-balance">Complete care for your companion</h2>
+          <div className="mt-4 flex items-center justify-center gap-3 text-muted-foreground">
+            <span className="h-px w-12 bg-border"/> <span>🐾</span> <span className="h-px w-12 bg-border"/>
+          </div>
+        </div>
+
+        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
+          {SERVICES.slice(0, 5).map((s) => {
+            const c = colorMap[s.color];
+            return (
+              <article key={s.slug} className="group relative rounded-3xl bg-card p-6 ring-1 ring-border hover:shadow-pop hover:-translate-y-1 transition-all duration-300">
+                <div className={`h-16 w-16 rounded-2xl ${c.bg} grid place-items-center ring-4 ${c.ring} group-hover:scale-110 transition`}>
+                  <ServiceIcon name={s.icon} className={`h-8 w-8 ${c.text}`} />
+                </div>
+                <h3 className="mt-5 font-display text-xl font-bold">{s.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                <Link to="/services" className={`mt-5 inline-flex h-9 w-9 items-center justify-center rounded-full ${c.bg} ${c.text} group-hover:translate-x-1 transition`}>
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </article>
+            );
+          })}
+        </div>
+
+        <div className="mt-10 text-center">
+          <Link to="/services" className="inline-flex items-center gap-2 rounded-full bg-white ring-1 ring-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-brand-blue-soft hover:text-brand-blue transition">
+            View all services <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function WhyUs() {
+  const items = [
+    { Icon: Heart, color: "blue", title: "Loving & Caring", desc: "We treat every pet with love and compassion." },
+    { Icon: ShieldCheck, color: "green", title: "Safe & Trusted", desc: "Your pet's safety and well-being always come first." },
+    { Icon: Clock, color: "orange", title: "Fast Response", desc: "We're ready whenever your pet needs us, day or night." },
+    { Icon: Sparkles, color: "pink", title: "Affordable Plans", desc: "Quality care at prices that are fair and transparent." },
+  ] as const;
+
+  return (
+    <section className="relative py-10 lg:py-12">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative rounded-[2.5rem] bg-brand-blue-soft/60 px-6 sm:px-10 lg:px-14 py-14 overflow-hidden">
+          <Amoeba variant={1} color="oklch(0.58 0.18 245 / 0.12)" className="absolute -top-20 -left-20 h-80 w-80" />
+          <Amoeba variant={4} color="oklch(0.68 0.16 155 / 0.18)" className="absolute -bottom-20 -right-20 h-80 w-80" />
+
+          <div className="relative grid lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-4">
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-blue">Why choose us</p>
+              <h2 className="mt-3 font-display text-4xl font-black leading-tight">More than just care, <span className="italic text-brand-blue">it's a bond.</span></h2>
+              <p className="mt-4 text-sm text-muted-foreground">We treat every pet with love, patience and dedication. Your pet's happiness and safety is our top priority.</p>
+              <Link to="/about" className="mt-6 inline-flex items-center gap-2 rounded-full gradient-cta text-white px-5 py-3 text-sm font-semibold shadow-soft">
+                About us <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+
+            <div className="lg:col-span-4 relative">
+              <div className="absolute inset-0 grid place-items-center">
+                <Amoeba variant={3} color="oklch(0.58 0.18 245 / 0.25)" className="h-72 w-72 animate-float" />
+              </div>
+              <img src={dogPortrait} alt="Happy puppy" width={1024} height={1024} loading="lazy" className="relative mx-auto w-64 drop-shadow-xl" />
+            </div>
+
+            <div className="lg:col-span-4 grid sm:grid-cols-2 gap-4">
+              {items.map(({ Icon, color, title, desc }) => {
+                const c = colorMap[color];
+                return (
+                  <div key={title} className="rounded-2xl bg-white p-5 ring-1 ring-border">
+                    <div className={`h-11 w-11 rounded-xl ${c.bg} grid place-items-center`}>
+                      <Icon className={`h-5 w-5 ${c.text}`} />
+                    </div>
+                    <h4 className="mt-3 font-bold text-sm">{title}</h4>
+                    <p className="mt-1 text-xs text-muted-foreground leading-relaxed">{desc}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Stats() {
+  const stats = [
+    { num: "500+", label: "Happy pet parents", color: "blue" },
+    { num: "1200+", label: "Pets served", color: "green" },
+    { num: "25+", label: "Areas covered", color: "orange" },
+    { num: "10+", label: "Services offered", color: "pink" },
+  ] as const;
+  return (
+    <section className="py-6">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="rounded-3xl bg-white ring-1 ring-border shadow-soft grid grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-border overflow-hidden">
+          {stats.map((s) => {
+            const c = colorMap[s.color];
+            return (
+              <div key={s.label} className="p-6 flex items-center gap-4">
+                <div className={`h-12 w-12 rounded-2xl ${c.bg} grid place-items-center`}>
+                  <Star className={`h-5 w-5 ${c.text}`} />
+                </div>
+                <div>
+                  <div className="font-display text-3xl font-black text-foreground">{s.num}</div>
+                  <div className="text-xs text-muted-foreground">{s.label}</div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Testimonials() {
+  const items = [
+    { name: "Anjali R.", area: "Madhapur", avatar: avatar1, quote: "Excellent service! My dog is always happy and well cared for. Their team showed up on time and made the whole vaccination process stress-free." },
+    { name: "Rohit S.", area: "Gachibowli", avatar: avatar2, quote: "Very professional and reliable team. They treat pets like family. I called them in the middle of the night for an emergency and they were here within the hour." },
+    { name: "Sneha K.", area: "Kondapur", avatar: avatar3, quote: "Home IV therapy was a lifesaver. My senior dog hates the clinic. Getting expert care at home made all the difference in his recovery." },
+  ];
+  return (
+    <section className="relative py-12 lg:py-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto">
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-orange">What pet parents say</p>
+          <h2 className="mt-3 font-display text-4xl sm:text-5xl font-black">Real stories, <span className="italic text-brand-orange">real happiness</span></h2>
+        </div>
+        <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {items.map((t) => (
+            <figure key={t.name} className="relative rounded-3xl bg-white p-7 ring-1 ring-border shadow-soft">
+              <div className="flex gap-0.5 text-brand-yellow">
+                {Array.from({length:5}).map((_,i) => <Star key={i} className="h-4 w-4 fill-current" />)}
+              </div>
+              <blockquote className="mt-4 text-sm leading-relaxed text-foreground">"{t.quote}"</blockquote>
+              <figcaption className="mt-5 flex items-center gap-3 pt-5 border-t border-border">
+                <img src={t.avatar} alt={t.name} loading="lazy" width={64} height={64} className="h-12 w-12 rounded-full object-cover bg-brand-blue-soft" />
+                <div>
+                  <div className="text-sm font-bold">{t.name}</div>
+                  <div className="text-xs text-muted-foreground">{t.area}</div>
+                </div>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Areas() {
+  return (
+    <section className="py-10 lg:py-12">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative rounded-[2.5rem] bg-brand-green-soft/60 overflow-hidden p-8 sm:p-12">
+          <Amoeba variant={2} color="oklch(0.68 0.16 155 / 0.18)" className="absolute -top-16 -right-16 h-72 w-72" />
+          <div className="relative grid lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-4">
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-green">Serving pet parents across</p>
+              <h2 className="mt-3 font-display text-4xl font-black">Hyderabad</h2>
+              <p className="mt-4 text-sm text-muted-foreground">We proudly serve pet families across the city's most prominent locations — and everywhere in between.</p>
+            </div>
+            <div className="lg:col-span-8 grid grid-cols-2 min-[400px]:grid-cols-3 sm:grid-cols-3 lg:grid-cols-4 gap-2">
+              {AREAS.map((a) => (
+                <div key={a} className={`rounded-full px-3 py-2 text-xs sm:text-sm font-medium flex items-center gap-1.5 ${a.startsWith("+") ? "gradient-cta text-white" : "bg-white text-foreground ring-1 ring-border"}`}>
+                  <MapPin className="h-3.5 w-3.5 text-brand-green shrink-0" />
+                  <span className="truncate">{a.replace("+ ","")}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FinalCta() {
+  return (
+    <section className="relative pt-4 pb-12">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative overflow-hidden rounded-[2.5rem] gradient-cta text-white px-6 sm:px-12 py-10 sm:py-12 grid lg:grid-cols-12 gap-6 items-center">
+          <Amoeba variant={1} color="rgba(255,255,255,0.08)" className="absolute -top-20 -left-20 h-72 w-72" />
+          <Amoeba variant={3} color="rgba(255,255,255,0.06)" className="absolute -bottom-20 -right-20 h-80 w-80" />
+          <img src={dogCta} alt="Happy puppy" width={1024} height={1024} loading="lazy" className="relative lg:col-span-3 w-40 mx-auto lg:mx-0 drop-shadow-xl animate-float" />
+          <div className="relative lg:col-span-5">
+            <h2 className="font-display text-3xl sm:text-4xl font-black leading-tight">Ready to give your pet the <span className="italic text-brand-yellow">best care?</span></h2>
+            <p className="mt-2 text-sm text-white/85">Book your home visit in under a minute — we'll be there.</p>
+          </div>
+          <div className="relative lg:col-span-4 grid sm:grid-cols-2 gap-3">
+            <a href="https://wa.me/919985356507?text=Hi,%20we%20need%20the%20services" className="rounded-2xl bg-white/15 backdrop-blur ring-1 ring-white/20 p-4 hover:bg-white/25 transition">
+              <WhatsAppIcon className="h-5 w-5 mb-2" />
+              <div className="text-xs uppercase tracking-widest opacity-80">Chat on WhatsApp</div>
+              <div className="font-display text-xl font-bold">99853 56507</div>
+            </a>
+            <a href="tel:+919985356507" className="rounded-2xl bg-white text-foreground p-4 hover:scale-[1.02] transition shadow-pop">
+              <Phone className="h-5 w-5 mb-2 text-brand-blue" />
+              <div className="text-xs uppercase tracking-widest text-muted-foreground">Call now</div>
+              <div className="font-display text-xl font-bold">99853 56507</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
