@@ -47,16 +47,16 @@ export const Logo = ({ compact = false }: { compact?: boolean }) => {
   };
 
   return (
-    <Link to="/" onClick={triggerEmojiBlast} className="flex items-center gap-2.5 group">
+    <Link to="/" onClick={triggerEmojiBlast} className="flex items-center gap-3 group">
       <img
         src={logoImg}
         alt="Home Pet Services Logo"
-        className="h-10 sm:h-11 w-auto object-contain transition-transform group-hover:scale-105"
+        className="h-12 sm:h-15 w-auto object-contain transition-transform group-hover:scale-105"
       />
       {!compact && (
         <span className="leading-tight hidden min-[375px]:block">
-          <span className="block font-display text-base sm:text-lg font-bold text-foreground">Home Pet Services</span>
-          <span className="block text-[9px] sm:text-[10px] uppercase tracking-[0.18em] text-brand-blue font-semibold">Care at your doorstep</span>
+          <span className="block font-display text-lg sm:text-xl font-bold text-foreground">Home Pet Services</span>
+          <span className="block text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-brand-blue font-semibold">Care at your doorstep</span>
         </span>
       )}
     </Link>

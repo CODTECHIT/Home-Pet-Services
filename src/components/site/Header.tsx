@@ -14,34 +14,34 @@ export const Header = () => {
   const [open, setOpen] = useState(false);
   return (
     <header className="sticky top-0 z-40 w-full backdrop-blur-xl bg-background/75 border-b border-border/60">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between py-3">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between py-4 sm:py-5">
         <Logo />
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-2">
           {NAV.map((n) => (
             <Link
               key={n.to}
               to={n.to}
               activeOptions={{ exact: true }}
-              className="px-4 py-2 text-sm font-semibold text-muted-foreground hover:text-foreground rounded-full transition-colors"
+              className="px-5 py-2.5 text-base font-semibold text-muted-foreground hover:text-foreground rounded-full transition-colors"
               activeProps={{ className: "text-brand-blue bg-brand-blue-soft" }}
             >
               {n.label}
             </Link>
           ))}
         </nav>
-        <div className="hidden md:flex items-center gap-2">
+        <div className="hidden md:flex items-center gap-3">
           <a
             href="tel:+919985356507"
-            className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-4 py-2.5 text-sm font-semibold hover:opacity-90 transition"
+            className="inline-flex items-center gap-2.5 rounded-full bg-foreground text-background px-5 py-3.5 text-sm sm:text-base font-semibold hover:opacity-90 transition"
           >
-            <Phone className="h-4 w-4" /> 99853 56507
+            <Phone className="h-4.5 w-4.5" /> 99853 56507
           </a>
           <a
             href="https://wa.me/919985356507?text=Hi,%20we%20need%20the%20services"
             target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-whatsapp text-white px-4 py-2.5 text-sm font-semibold hover:brightness-110 transition shadow-soft"
+            className="inline-flex items-center gap-2.5 rounded-full bg-whatsapp text-white px-5 py-3.5 text-sm sm:text-base font-semibold hover:brightness-110 transition shadow-soft"
           >
-            <WhatsAppIcon className="h-4 w-4" /> WhatsApp
+            <WhatsAppIcon className="h-4.5 w-4.5" /> WhatsApp
           </a>
         </div>
         <button
