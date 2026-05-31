@@ -47,18 +47,24 @@ export default defineConfig(({ command }) => {
       // Add nitro build integration for production
       ...(command === "build"
         ? [
-            nitro({
-              preset: process.env.NITRO_PRESET || "cloudflare-module",
-              output: {
-                dir: "dist",
-                serverDir: "dist/server",
-                publicDir: "dist/client",
-              },
-              cloudflare: {
-                nodeCompat: true,
-                deployConfig: true,
-              },
-            }),
+            nitro(
+              process.env.VERCEL
+                ? {
+                    preset: "vercel",
+                  }
+                : {
+                    preset: process.env.NITRO_PRESET || "cloudflare-module",
+                    output: {
+                      dir: "dist",
+                      serverDir: "dist/server",
+                      publicDir: "dist/client",
+                    },
+                    cloudflare: {
+                      nodeCompat: true,
+                      deployConfig: true,
+                    },
+                  }
+            ),
           ]
         : []),
     ],
