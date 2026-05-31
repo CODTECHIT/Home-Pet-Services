@@ -51,7 +51,7 @@ export const Logo = ({ compact = false }: { compact?: boolean }) => {
       <img
         src={logoImg}
         alt="Home Pet Services Logo"
-        className="h-12 sm:h-15 w-auto object-contain transition-transform group-hover:scale-105"
+        className="h-16 sm:h-22 w-auto object-contain transition-transform group-hover:scale-105"
       />
       {!compact && (
         <span className="leading-tight hidden min-[375px]:block">
