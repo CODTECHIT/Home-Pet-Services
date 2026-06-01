@@ -5,8 +5,7 @@ import { Amoeba } from "@/components/site/Amoeba";
 import { ServiceIcon } from "@/components/site/ServiceIcon";
 import { WhatsAppIcon } from "@/components/site/Header";
 import { SERVICES, colorMap } from "@/data/services";
-import heroPets from "@/assets/hero-pets.png";
-import dogCta from "@/assets/dog-cta.png";
+
 import { z } from "zod";
 
 const servicesSearchSchema = z.object({
@@ -48,7 +47,23 @@ function ServicesPage() {
             <div className="absolute inset-0 grid place-items-center">
               <Amoeba variant={1} color="oklch(0.58 0.18 245 / 0.2)" className="h-72 w-72 animate-float" />
             </div>
-            <img src={heroPets} alt="Happy dog and cat" width={1024} height={1024} className="relative z-10 w-full max-w-[320px] sm:max-w-[360px] drop-shadow-2xl" />
+            {/* Video in hero */}
+            <div className="relative z-10 w-full max-w-[340px] sm:max-w-[400px] rounded-[1.5rem] overflow-hidden shadow-pop border border-white/40">
+              <video
+                src="/video.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-[300px] sm:h-[360px] object-cover"
+                aria-label="Home Pet Services — veterinary care at home"
+              />
+              {/* Subtle brand overlay at bottom */}
+              <div className="absolute bottom-0 left-0 right-0 px-4 py-3 bg-gradient-to-t from-black/55 to-transparent flex items-center gap-2">
+                <div className="h-2 w-2 rounded-full bg-brand-green animate-pulse shrink-0" />
+                <span className="text-white text-[10px] font-bold uppercase tracking-[0.16em]">See us in action</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -74,47 +89,49 @@ function ServicesPage() {
             {displayedServices.map((s) => {
               const c = colorMap[s.color];
               return (
-                <article key={s.slug} className={`group relative rounded-[2rem] bg-card flex flex-col border border-border shadow-soft hover:shadow-pop hover:-translate-y-1 transition-all duration-300 overflow-hidden ${displayedServices.length === 1 ? "w-full max-w-sm" : ""}`}>
+                <article key={s.slug} className={`group relative rounded-3xl bg-card p-7 sm:p-8 flex flex-col items-center text-center border border-border shadow-soft hover:shadow-pop hover:-translate-y-1 transition-all duration-300 ${displayedServices.length === 1 ? "w-full max-w-sm" : ""}`}>
                   {/* Image & Floating Icon Badge Container */}
-                  <div className="relative w-full h-48 sm:h-52 bg-muted overflow-hidden">
-                    <img
-                      src={s.image}
-                      alt={s.title}
-                      className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    {/* Floating Icon Badge overlapping the bottom-left of the image */}
-                    <div className={`absolute bottom-4 left-4 h-12 w-12 rounded-full ${c.bg} grid place-items-center ring-4 ring-white shadow-md z-10`}>
-                      <ServiceIcon name={s.icon} className={`h-5.5 w-5.5 ${c.text}`} />
+                  <div className="mb-5 flex justify-center">
+                    <div className="relative">
+                      <div className="h-44 w-44 sm:h-48 sm:w-48 rounded-full overflow-hidden border-4 border-white shadow-md bg-muted">
+                        <img
+                          src={s.image}
+                          alt={s.title}
+                          className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                      {/* Icon Badge overlapping the top-left of the image */}
+                      <div className={`absolute top-0 left-0 h-12 w-12 rounded-full ${c.bg} grid place-items-center ring-4 ring-white shadow-md`}>
+                        <ServiceIcon name={s.icon} className={`h-5.5 w-5.5 ${c.text}`} />
+                      </div>
                     </div>
                   </div>
 
-                  {/* Title & Description Container */}
-                  <div className="p-6 flex flex-col flex-grow text-left">
-                    <h3 className="font-display text-xl font-black text-foreground">{s.title}</h3>
-                    <p className="mt-3 text-sm text-muted-foreground leading-relaxed flex-grow">{s.desc}</p>
-                    
-                    {/* Button */}
-                    <a
-                      href={`https://wa.me/919985356507?text=${encodeURIComponent(`Hi, I want to book the ${s.title} service for my pet.`)}`}
-                      target="_blank" rel="noopener noreferrer"
-                      className={`mt-6 w-full rounded-full border border-current py-2.5 flex items-center justify-center gap-2 text-sm font-bold transition-all duration-300 ${c.text} hover:bg-current/5`}
-                    >
+                  {/* Title & Description */}
+                  <h3 className="font-display text-xl font-black text-foreground mt-0">{s.title}</h3>
+                  <p className="mt-2.5 text-sm text-muted-foreground leading-relaxed max-w-[260px]">{s.desc}</p>
+                  
+                  {/* Button */}
+                  <a
+                    href={`https://wa.me/919985356507?text=${encodeURIComponent(`Hi, I want to book the ${s.title} service for my pet.`)}`}
+                    target="_blank" rel="noopener noreferrer"
+                    className="mt-auto pt-6 w-full block"
+                  >
+                    <span className={`flex w-full items-center justify-center gap-2 rounded-full border border-current py-3 text-sm font-semibold transition-all duration-300 ${c.text} hover:bg-current/5`}>
                       <WhatsAppIcon className="h-4.5 w-4.5 fill-current" />
                       <span>Contact</span>
-                    </a>
-                  </div>
+                    </span>
+                  </a>
                 </article>
               );
             })}
           </div>
 
-          <div className="mt-10 lg:mt-12 rounded-[2rem] gradient-cta text-white p-8 sm:p-10 grid lg:grid-cols-12 gap-6 items-center overflow-hidden relative">
+          {/* ── CTA Banner ── */}
+          <div className="mt-8 rounded-[2rem] gradient-cta text-white p-8 sm:p-10 grid lg:grid-cols-12 gap-6 items-center overflow-hidden relative">
             <Amoeba variant={4} color="rgba(255,255,255,0.1)" className="absolute -top-16 -right-16 h-64 w-64" />
             <Amoeba variant={1} color="rgba(255,255,255,0.06)" className="absolute -bottom-16 -left-16 h-64 w-64" />
-            <div className="relative lg:col-span-3 flex justify-center">
-              <img src={dogCta} alt="Happy puppy" width={1024} height={1024} className="w-36 drop-shadow-xl animate-float" />
-            </div>
-            <div className="relative lg:col-span-5 text-center lg:text-left">
+            <div className="relative lg:col-span-8 text-center lg:text-left">
               <h2 className="font-display text-3xl font-black">Not sure which service you need?</h2>
               <p className="mt-2 text-white/85 text-sm">Tell us about your pet — we'll recommend the right care.</p>
             </div>

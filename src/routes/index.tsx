@@ -52,10 +52,10 @@ function Hero() {
       <PawPattern className="absolute bottom-16 left-1/4 h-6 w-6 text-brand-orange/30 -rotate-12 pointer-events-none" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8 pb-10 sm:pt-10 sm:pb-14 lg:pt-14 lg:pb-16">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+        <div className="grid lg:grid-cols-12 gap-6 lg:gap-4 items-center">
 
           {/* ── Left: text column ── */}
-          <div className="lg:col-span-7 text-center lg:text-left">
+          <div className="lg:col-span-6 text-center lg:text-left">
             {/* Pill Badge */}
             <span className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-blue ring-1 ring-brand-blue/15 shadow-sm">
               <PawPattern className="h-3.5 w-3.5 text-brand-blue fill-current animate-wiggle" />
@@ -141,32 +141,36 @@ function Hero() {
             </div>
           </div>
 
-          {/* ── Right: image column ── */}
-          <div className="lg:col-span-5 relative flex justify-center lg:justify-end mt-4 lg:mt-0">
-            <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-md">
-              {/* Backdrop shape */}
-              <div className="absolute inset-0 bg-brand-green-soft/40 rounded-full filter blur-2xl scale-95 opacity-90 animate-float pointer-events-none" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[280px] w-[280px] sm:h-[350px] sm:w-[350px] lg:h-[400px] lg:w-[400px] bg-brand-green/10 rounded-full pointer-events-none shadow-inner" />
+          {/* ── Right: hero pet group image ── */}
+          <div className="lg:col-span-6 relative flex justify-center lg:justify-end mt-4 lg:mt-0 lg:-mr-8">
+            <div className="relative w-full max-w-[480px] sm:max-w-[580px] lg:max-w-none lg:w-[115%]">
 
-              {/* Pet cutout image */}
+              {/* Main pet group image — already contains all animals + decorations */}
               <img
-                src={heroPets}
-                alt="Happy golden retriever and tabby cat"
-                width={1024}
-                height={1024}
-                className="relative z-10 w-full drop-shadow-2xl hover:scale-[1.01] transition-transform duration-500"
+                src="/image.png"
+                alt="Golden retriever, tabby cat, rabbit, cockatiel and green parrot together"
+                className="relative z-10 w-full drop-shadow-xl"
               />
 
-              {/* Floating Social Proof Badge */}
-              <div className="absolute -bottom-2 -left-4 sm:bottom-4 sm:-left-6 z-20 flex items-center gap-3 rounded-full bg-white px-4 py-2.5 sm:px-5 sm:py-3 shadow-pop border border-border/80 max-w-[240px] sm:max-w-[260px]">
+              {/* ── Exotic Pets badge ── */}
+              <div className="absolute bottom-[18%] right-0 z-20 flex items-center gap-2 bg-white rounded-2xl px-3 py-2 shadow-pop border border-border/50 animate-float">
+                <span className="h-8 w-8 rounded-full bg-brand-green-soft flex items-center justify-center shrink-0 text-base leading-none">🐾</span>
+                <div className="text-left leading-tight">
+                  <p className="text-[9px] text-muted-foreground font-medium">Now caring for</p>
+                  <p className="text-sm font-black text-brand-green">Exotic Pets Too!</p>
+                </div>
+              </div>
+
+              {/* ── Social proof badge ── */}
+              <div className="absolute bottom-4 left-0 z-20 flex items-center gap-3 rounded-full bg-white px-4 py-2.5 shadow-pop border border-border/80 max-w-[230px]">
                 <div className="flex -space-x-3 shrink-0">
-                  <img src={avatar1} className="h-8 w-8 sm:h-9 sm:w-9 rounded-full border-2 border-white object-cover shadow-sm bg-brand-blue-soft" alt="User avatar" />
-                  <img src={avatar2} className="h-8 w-8 sm:h-9 sm:w-9 rounded-full border-2 border-white object-cover shadow-sm bg-brand-blue-soft" alt="User avatar" />
-                  <img src={avatar3} className="h-8 w-8 sm:h-9 sm:w-9 rounded-full border-2 border-white object-cover shadow-sm bg-brand-blue-soft" alt="User avatar" />
+                  <img src={avatar1} className="h-8 w-8 rounded-full border-2 border-white object-cover shadow-sm bg-brand-blue-soft" alt="User avatar" />
+                  <img src={avatar2} className="h-8 w-8 rounded-full border-2 border-white object-cover shadow-sm bg-brand-blue-soft" alt="User avatar" />
+                  <img src={avatar3} className="h-8 w-8 rounded-full border-2 border-white object-cover shadow-sm bg-brand-blue-soft" alt="User avatar" />
                 </div>
                 <div className="text-left leading-tight">
-                  <p className="text-xs sm:text-sm font-black text-foreground">1,000+</p>
-                  <p className="text-[9px] sm:text-[10px] text-muted-foreground font-semibold">Happy Pet Parents</p>
+                  <p className="text-xs font-black text-foreground">1,000+</p>
+                  <p className="text-[10px] text-muted-foreground font-semibold">Happy Pet Parents</p>
                 </div>
               </div>
             </div>
@@ -224,35 +228,39 @@ function Services() {
           {SERVICES.slice(0, 5).map((s) => {
             const c = colorMap[s.color];
             return (
-              <article key={s.slug} className="group relative rounded-[2rem] bg-card flex flex-col border border-border shadow-soft hover:shadow-pop hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+              <article key={s.slug} className="group relative rounded-3xl bg-card p-6 sm:p-7 flex flex-col items-center text-center border border-border shadow-soft hover:shadow-pop hover:-translate-y-1 transition-all duration-300">
                 {/* Image & Floating Icon Badge Container */}
-                <div className="relative w-full h-40 sm:h-44 bg-muted overflow-hidden">
-                  <img
-                    src={s.image}
-                    alt={s.title}
-                    className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  {/* Floating Icon Badge overlapping the bottom-left of the image */}
-                  <div className={`absolute bottom-3 left-3 h-10 w-10 rounded-full ${c.bg} grid place-items-center ring-4 ring-white shadow-md z-10`}>
-                    <ServiceIcon name={s.icon} className={`h-5 w-5 ${c.text}`} />
+                <div className="mb-4 flex justify-center">
+                  <div className="relative">
+                    <div className="h-32 w-32 sm:h-36 sm:w-36 rounded-full overflow-hidden border-4 border-white shadow-md bg-muted">
+                      <img
+                        src={s.image}
+                        alt={s.title}
+                        className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                    {/* Icon Badge overlapping the top-left of the image */}
+                    <div className={`absolute top-0 left-0 h-10 w-10 sm:h-11 sm:w-11 rounded-full ${c.bg} grid place-items-center ring-4 ring-white shadow-md`}>
+                      <ServiceIcon name={s.icon} className={`h-5 w-5 sm:h-5.5 sm:w-5.5 ${c.text}`} />
+                    </div>
                   </div>
                 </div>
 
                 {/* Title & Description */}
-                <div className="p-5 flex flex-col flex-grow text-left">
-                  <h3 className="font-display text-lg font-black text-foreground">{s.title}</h3>
-                  <p className="mt-2 text-xs text-muted-foreground leading-relaxed flex-grow">{s.desc}</p>
+                <h3 className="font-display text-lg sm:text-xl font-bold text-foreground mt-0">{s.title}</h3>
+                <p className="mt-2 text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-[240px]">{s.desc}</p>
 
-                  {/* Button */}
-                  <a
-                    href={`https://wa.me/919985356507?text=${encodeURIComponent(`Hi, I want to book the ${s.title} service for my pet.`)}`}
-                    target="_blank" rel="noopener noreferrer"
-                    className={`mt-4 w-full rounded-full border border-current py-2 flex items-center justify-center gap-2 text-xs font-bold transition-all duration-300 ${c.text} hover:bg-current/5`}
-                  >
+                {/* Button */}
+                <a
+                  href={`https://wa.me/919985356507?text=${encodeURIComponent(`Hi, I want to book the ${s.title} service for my pet.`)}`}
+                  target="_blank" rel="noopener noreferrer"
+                  className="mt-auto pt-5 w-full block"
+                >
+                  <span className={`flex w-full items-center justify-center gap-2 rounded-full border border-current py-2.5 text-xs font-semibold transition-all duration-300 ${c.text} hover:bg-current/5`}>
                     <WhatsAppIcon className="h-4 w-4 fill-current" />
                     <span>Contact</span>
-                  </a>
-                </div>
+                  </span>
+                </a>
               </article>
             );
           })}
