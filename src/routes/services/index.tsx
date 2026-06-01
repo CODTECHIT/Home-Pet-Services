@@ -95,16 +95,16 @@ function ServicesPage() {
                   <p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-[250px] flex-grow">{s.desc}</p>
                   
                   {/* Button */}
-                  <Link
-                    to="/services/$slug"
-                    params={{ slug: s.slug }}
+                  <a
+                    href={`https://wa.me/919985356507?text=${encodeURIComponent(`Hi, I want to book the ${s.title} service for my pet.`)}`}
+                    target="_blank" rel="noopener noreferrer"
                     className={`mt-6 w-full rounded-full border border-current px-5 py-2.5 flex items-center justify-between text-sm font-semibold transition-all duration-300 ${c.text} hover:bg-current/5`}
                   >
-                    <span>Learn More</span>
+                    <span>Contact</span>
                     <span className="h-7 w-7 rounded-full bg-current flex items-center justify-center shrink-0">
-                      <ArrowRight className="h-4 w-4 text-white" />
+                      <WhatsAppIcon className="h-4 w-4 text-white fill-current" />
                     </span>
-                  </Link>
+                  </a>
                 </article>
               );
             })}

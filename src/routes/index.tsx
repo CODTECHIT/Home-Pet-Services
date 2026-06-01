@@ -245,16 +245,16 @@ function Services() {
                 <p className="mt-2 text-xs sm:text-sm text-muted-foreground leading-relaxed flex-grow">{s.desc}</p>
 
                 {/* Button */}
-                <Link
-                  to="/services"
-                  search={{ service: s.slug }}
+                <a
+                  href={`https://wa.me/919985356507?text=${encodeURIComponent(`Hi, I want to book the ${s.title} service for my pet.`)}`}
+                  target="_blank" rel="noopener noreferrer"
                   className={`mt-4 w-full rounded-full border border-current px-4 py-2 flex items-center justify-between text-xs font-semibold transition-all duration-300 ${c.text} hover:bg-current/5`}
                 >
-                  <span>Learn More</span>
+                  <span>Contact</span>
                   <span className="h-6 w-6 rounded-full bg-current flex items-center justify-center shrink-0">
-                    <ArrowRight className="h-3.5 w-3.5 text-white" />
+                    <WhatsAppIcon className="h-3.5 w-3.5 text-white fill-current" />
                   </span>
-                </Link>
+                </a>
               </article>
             );
           })}
