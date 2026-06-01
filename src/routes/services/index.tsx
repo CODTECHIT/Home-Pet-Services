@@ -74,37 +74,35 @@ function ServicesPage() {
             {displayedServices.map((s) => {
               const c = colorMap[s.color];
               return (
-                <article key={s.slug} className={`group relative rounded-3xl bg-card p-6 flex flex-col items-center text-center border border-border shadow-soft hover:shadow-pop hover:-translate-y-1 transition-all duration-300 ${displayedServices.length === 1 ? "w-full max-w-sm" : ""}`}>
+                <article key={s.slug} className={`group relative rounded-[2rem] bg-card flex flex-col border border-border shadow-soft hover:shadow-pop hover:-translate-y-1 transition-all duration-300 overflow-hidden ${displayedServices.length === 1 ? "w-full max-w-sm" : ""}`}>
                   {/* Image & Floating Icon Badge Container */}
-                  <div className="relative mb-5 flex justify-center">
-                    <div className="h-44 w-44 sm:h-48 sm:w-48 rounded-full overflow-hidden border-4 border-white shadow-md bg-muted">
-                      <img
-                        src={s.image}
-                        alt={s.title}
-                        className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
-                    {/* Icon Badge overlapping the top-left of the image */}
-                    <div className={`absolute top-0 left-1 h-12 w-12 rounded-full ${c.bg} grid place-items-center ring-4 ring-white shadow-md`}>
+                  <div className="relative w-full h-48 sm:h-52 bg-muted overflow-hidden">
+                    <img
+                      src={s.image}
+                      alt={s.title}
+                      className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    {/* Floating Icon Badge overlapping the bottom-left of the image */}
+                    <div className={`absolute bottom-4 left-4 h-12 w-12 rounded-full ${c.bg} grid place-items-center ring-4 ring-white shadow-md z-10`}>
                       <ServiceIcon name={s.icon} className={`h-5.5 w-5.5 ${c.text}`} />
                     </div>
                   </div>
 
-                  {/* Title & Description */}
-                  <h3 className="font-display text-xl font-black text-foreground mt-2">{s.title}</h3>
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-[250px] flex-grow">{s.desc}</p>
-                  
-                  {/* Button */}
-                  <a
-                    href={`https://wa.me/919985356507?text=${encodeURIComponent(`Hi, I want to book the ${s.title} service for my pet.`)}`}
-                    target="_blank" rel="noopener noreferrer"
-                    className={`mt-6 w-full rounded-full border border-current px-5 py-2.5 flex items-center justify-between text-sm font-semibold transition-all duration-300 ${c.text} hover:bg-current/5`}
-                  >
-                    <span>Contact</span>
-                    <span className="h-7 w-7 rounded-full bg-current flex items-center justify-center shrink-0">
-                      <WhatsAppIcon className="h-4 w-4 text-white fill-current" />
-                    </span>
-                  </a>
+                  {/* Title & Description Container */}
+                  <div className="p-6 flex flex-col flex-grow text-left">
+                    <h3 className="font-display text-xl font-black text-foreground">{s.title}</h3>
+                    <p className="mt-3 text-sm text-muted-foreground leading-relaxed flex-grow">{s.desc}</p>
+                    
+                    {/* Button */}
+                    <a
+                      href={`https://wa.me/919985356507?text=${encodeURIComponent(`Hi, I want to book the ${s.title} service for my pet.`)}`}
+                      target="_blank" rel="noopener noreferrer"
+                      className={`mt-6 w-full rounded-full border border-current py-2.5 flex items-center justify-center gap-2 text-sm font-bold transition-all duration-300 ${c.text} hover:bg-current/5`}
+                    >
+                      <WhatsAppIcon className="h-4.5 w-4.5 fill-current" />
+                      <span>Contact</span>
+                    </a>
+                  </div>
                 </article>
               );
             })}

@@ -224,37 +224,35 @@ function Services() {
           {SERVICES.slice(0, 5).map((s) => {
             const c = colorMap[s.color];
             return (
-              <article key={s.slug} className="group relative rounded-3xl bg-card p-5 flex flex-col items-center text-center border border-border shadow-soft hover:shadow-pop hover:-translate-y-1 transition-all duration-300">
+              <article key={s.slug} className="group relative rounded-[2rem] bg-card flex flex-col border border-border shadow-soft hover:shadow-pop hover:-translate-y-1 transition-all duration-300 overflow-hidden">
                 {/* Image & Floating Icon Badge Container */}
-                <div className="relative mb-4 flex justify-center">
-                  <div className="h-32 w-32 sm:h-36 sm:w-36 rounded-full overflow-hidden border-4 border-white shadow-md bg-muted">
-                    <img
-                      src={s.image}
-                      alt={s.title}
-                      className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  {/* Icon Badge overlapping the top-left of the image */}
-                  <div className={`absolute top-0 left-0 h-10 w-10 sm:h-11 sm:w-11 rounded-full ${c.bg} grid place-items-center ring-4 ring-white shadow-md`}>
-                    <ServiceIcon name={s.icon} className={`h-5 w-5 sm:h-5.5 sm:w-5.5 ${c.text}`} />
+                <div className="relative w-full h-40 sm:h-44 bg-muted overflow-hidden">
+                  <img
+                    src={s.image}
+                    alt={s.title}
+                    className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  {/* Floating Icon Badge overlapping the bottom-left of the image */}
+                  <div className={`absolute bottom-3 left-3 h-10 w-10 rounded-full ${c.bg} grid place-items-center ring-4 ring-white shadow-md z-10`}>
+                    <ServiceIcon name={s.icon} className={`h-5 w-5 ${c.text}`} />
                   </div>
                 </div>
 
                 {/* Title & Description */}
-                <h3 className="font-display text-lg sm:text-xl font-bold text-foreground mt-2">{s.title}</h3>
-                <p className="mt-2 text-xs sm:text-sm text-muted-foreground leading-relaxed flex-grow">{s.desc}</p>
+                <div className="p-5 flex flex-col flex-grow text-left">
+                  <h3 className="font-display text-lg font-black text-foreground">{s.title}</h3>
+                  <p className="mt-2 text-xs text-muted-foreground leading-relaxed flex-grow">{s.desc}</p>
 
-                {/* Button */}
-                <a
-                  href={`https://wa.me/919985356507?text=${encodeURIComponent(`Hi, I want to book the ${s.title} service for my pet.`)}`}
-                  target="_blank" rel="noopener noreferrer"
-                  className={`mt-4 w-full rounded-full border border-current px-4 py-2 flex items-center justify-between text-xs font-semibold transition-all duration-300 ${c.text} hover:bg-current/5`}
-                >
-                  <span>Contact</span>
-                  <span className="h-6 w-6 rounded-full bg-current flex items-center justify-center shrink-0">
-                    <WhatsAppIcon className="h-3.5 w-3.5 text-white fill-current" />
-                  </span>
-                </a>
+                  {/* Button */}
+                  <a
+                    href={`https://wa.me/919985356507?text=${encodeURIComponent(`Hi, I want to book the ${s.title} service for my pet.`)}`}
+                    target="_blank" rel="noopener noreferrer"
+                    className={`mt-4 w-full rounded-full border border-current py-2 flex items-center justify-center gap-2 text-xs font-bold transition-all duration-300 ${c.text} hover:bg-current/5`}
+                  >
+                    <WhatsAppIcon className="h-4 w-4 fill-current" />
+                    <span>Contact</span>
+                  </a>
+                </div>
               </article>
             );
           })}
