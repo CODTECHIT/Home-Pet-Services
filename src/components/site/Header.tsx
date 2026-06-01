@@ -54,7 +54,7 @@ export const Header = () => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between py-3 sm:py-3.5">
           <Logo />
           
-          <nav className="hidden lg:flex items-center gap-1.5">
+          <nav className="hidden lg:flex items-center gap-1.5 shrink-0">
             {NAV.map((n) =>
               n.hasDropdown ? (
                 <div
@@ -66,7 +66,7 @@ export const Header = () => {
                   <Link
                     to={n.to}
                     activeOptions={{ exact: n.to === "/" }}
-                    className="px-4.5 py-2 text-sm font-semibold text-muted-foreground hover:text-foreground hover:bg-muted/40 rounded-full transition-all duration-300 flex items-center group/nav border border-transparent"
+                    className="px-4.5 py-2 text-sm font-semibold text-muted-foreground hover:text-foreground hover:bg-muted/40 rounded-full transition-all duration-300 flex items-center group/nav border border-transparent whitespace-nowrap"
                     activeProps={{ className: "text-brand-blue bg-brand-blue-soft border border-brand-blue/10 shadow-[inset_0_1.5px_3px_rgba(0,0,0,0.03)]" }}
                   >
                     <span>{n.label}</span>
@@ -105,7 +105,7 @@ export const Header = () => {
                   key={n.label + n.to}
                   to={n.to}
                   activeOptions={{ exact: n.to === "/" }}
-                  className="px-4.5 py-2 text-sm font-semibold text-muted-foreground hover:text-foreground hover:bg-muted/40 rounded-full transition-all duration-300 flex items-center group border border-transparent"
+                  className="px-4.5 py-2 text-sm font-semibold text-muted-foreground hover:text-foreground hover:bg-muted/40 rounded-full transition-all duration-300 flex items-center group border border-transparent whitespace-nowrap"
                   activeProps={{ className: "text-brand-blue bg-brand-blue-soft border border-brand-blue/10 shadow-[inset_0_1.5px_3px_rgba(0,0,0,0.03)]" }}
                 >
                   <span>{n.label}</span>
