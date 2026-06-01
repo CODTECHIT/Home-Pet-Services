@@ -2,8 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Eye, Target, Heart, ShieldCheck, Award, Users, ArrowRight } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Amoeba } from "@/components/site/Amoeba";
-import vetHome from "@/assets/vet-home.jpg";
-import dogPortrait from "@/assets/dog-portrait.png";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -37,7 +35,7 @@ function AboutPage() {
           </div>
           <div className="relative">
             <Amoeba variant={2} color="oklch(0.58 0.18 245 / 0.18)" className="absolute -top-8 -left-8 h-72 w-72" />
-            <img src={vetHome} alt="Vet caring for a dog at home" width={1024} height={1024} loading="lazy" className="relative rounded-[2rem] shadow-pop w-full object-cover aspect-[4/3]" />
+            <img src="/why choose us.png" alt="Veterinarian high-fiving a golden retriever" width={1024} height={1024} loading="lazy" className="relative rounded-[2rem] shadow-pop w-full object-cover aspect-[4/3]" />
           </div>
         </div>
       </section>
@@ -67,7 +65,7 @@ function AboutPage() {
             <div className="relative grid lg:grid-cols-12 gap-10 items-center">
               <div className="lg:col-span-4 relative">
                 <Amoeba variant={4} color="oklch(0.58 0.18 245 / 0.2)" className="absolute inset-0 h-72 w-72 mx-auto animate-float" />
-                <img src={dogPortrait} alt="" width={1024} height={1024} loading="lazy" className="relative mx-auto w-60 drop-shadow-xl" />
+                <img src="/why choose us.png" alt="Veterinarian high-fiving a golden retriever" width={1024} height={1024} loading="lazy" className="relative mx-auto rounded-[2rem] shadow-pop w-full object-cover aspect-[4/3]" />
               </div>
               <div className="lg:col-span-8">
                 <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-orange">Our core values</p>

@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Phone, ArrowRight, Clock, ShieldCheck, Heart, Home as HomeIcon, Sparkles, Star, MapPin, CheckCircle2 } from "lucide-react";
+import { Phone, ArrowRight, Clock, ShieldCheck, Heart, Home as HomeIcon, Sparkles, Star, MapPin, CheckCircle2, Calendar, Stethoscope, Headset, User, Leaf, HeartHandshake } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Amoeba, PawPattern } from "@/components/site/Amoeba";
 import { WhatsAppIcon } from "@/components/site/Header";
@@ -25,16 +25,16 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const AREAS = ["Jubilee Hills","Banjara Hills","Gachibowli","Financial District","Kondapur","Madhapur","Manikonda","Kokapet","Nallagandla","Tellapur","Hitech City","Kukatpally","Miyapur","Begumpet","Secunderabad","+ All over Hyderabad"];
+const AREAS = ["Jubilee Hills", "Banjara Hills", "Gachibowli", "Financial District", "Kondapur", "Madhapur", "Manikonda", "Kokapet", "Nallagandla", "Tellapur", "Hitech City", "Kukatpally", "Miyapur", "Begumpet", "Secunderabad", "+ All over Hyderabad"];
 
 function HomePage() {
   return (
     <SiteLayout>
       <Hero />
+      <StatsHeroBar />
       <ValueBar />
       <Services />
       <WhyUs />
-      <Stats />
       <Testimonials />
       <Areas />
       <FinalCta />
@@ -44,100 +44,129 @@ function HomePage() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden gradient-hero">
+    <section className="relative overflow-hidden gradient-hero pb-12 sm:pb-16 lg:pb-20">
       {/* Decorative blobs – clipped so they don't overflow on mobile */}
       <Amoeba variant={1} color="oklch(0.85 0.14 90 / 0.35)" className="absolute -top-20 -left-24 h-72 w-72 sm:h-[420px] sm:w-[420px] lg:h-[520px] lg:w-[520px] animate-spin-slow pointer-events-none" />
       <Amoeba variant={2} color="oklch(0.68 0.16 155 / 0.15)" className="absolute top-32 -right-24 h-64 w-64 sm:h-[360px] sm:w-[360px] lg:h-[460px] lg:w-[460px] pointer-events-none" />
       <PawPattern className="absolute top-8 right-1/3 h-8 w-8 text-brand-blue/20 rotate-12 pointer-events-none" />
       <PawPattern className="absolute bottom-16 left-1/4 h-6 w-6 text-brand-orange/30 -rotate-12 pointer-events-none" />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8 pb-10 sm:pt-10 sm:pb-14 lg:pt-14 lg:pb-20">
-        {/* Two-column on large screens, stacked on mobile */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-center">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8 pb-10 sm:pt-10 sm:pb-14 lg:pt-14 lg:pb-16">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
 
           {/* ── Left: text column ── */}
-          <div className="text-center lg:text-left">
-            <span className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur px-3 py-1.5 text-[11px] sm:text-xs font-bold uppercase tracking-widest text-brand-blue ring-1 ring-brand-blue/15">
-              <Sparkles className="h-3 w-3 sm:h-3.5 sm:w-3.5 shrink-0" /> Premium home pet care · Hyderabad
+          <div className="lg:col-span-7 text-center lg:text-left">
+            {/* Pill Badge */}
+            <span className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-blue ring-1 ring-brand-blue/15 shadow-sm">
+              <PawPattern className="h-3.5 w-3.5 text-brand-blue fill-current animate-wiggle" />
+              Trusted · Safe · Compassionate
             </span>
 
-            <h1 className="mt-4 font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.05] text-balance text-foreground">
-              Your pet. <br />
-              <span className="text-brand-blue italic">Our priority.</span>
+            {/* Main Headline */}
+            <h1 className="mt-5 font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.08] text-foreground text-balance">
+              Professional <br />
+              Pet Care <br />
+              <span className="text-brand-green">at Your Doorstep</span>
             </h1>
 
-            <p className="mt-4 text-base sm:text-lg text-muted-foreground max-w-lg mx-auto lg:mx-0 text-balance">
-              Vaccinations, emergencies, deworming, IV therapy and post-operative care — delivered with compassion to your doorstep.
+            {/* Description */}
+            <p className="mt-5 text-base sm:text-lg text-muted-foreground max-w-lg mx-auto lg:mx-0 leading-relaxed text-balance">
+              Vaccinations, emergencies, deworming, IV therapy and post-operative care — delivered with love and expertise.
             </p>
 
-            {/* CTA buttons */}
-            <div className="mt-6 flex flex-wrap justify-center lg:justify-start gap-3">
-              <a
-                href="https://wa.me/919985356507?text=Hi,%20we%20need%20the%20services"
-                className="group inline-flex items-center gap-2 rounded-full bg-whatsapp text-white px-5 py-3 sm:px-6 sm:py-3.5 text-sm sm:text-base font-semibold shadow-pop hover:scale-[1.02] transition"
-              >
-                <WhatsAppIcon className="h-4 w-4 sm:h-5 sm:w-5 shrink-0" />
-                <span className="flex flex-col items-start leading-tight">
-                  <span>Chat on WhatsApp</span>
-                  <span className="text-[10px] sm:text-[11px] font-normal opacity-90">99853 56507</span>
+            {/* Features Row */}
+            <div className="mt-6 flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4">
+              {/* Feature 1 */}
+              <div className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-white/60 backdrop-blur-sm border border-border shadow-sm">
+                <span className="h-7 w-7 rounded-full bg-brand-green-soft text-brand-green flex items-center justify-center shrink-0">
+                  <Stethoscope className="h-4 w-4" />
                 </span>
-              </a>
-              <a
-                href="tel:+919985356507"
-                className="group inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 sm:px-6 sm:py-3.5 text-sm sm:text-base font-semibold text-foreground shadow-soft ring-1 ring-border hover:scale-[1.02] transition"
-              >
-                <span className="grid h-7 w-7 sm:h-8 sm:w-8 place-items-center rounded-full bg-brand-blue text-white shrink-0">
-                  <Phone className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                <div className="text-left leading-none">
+                  <div className="text-xs font-bold text-foreground">Vet Experts</div>
+                  <div className="text-[9px] text-muted-foreground font-semibold mt-0.5">Certified Team</div>
+                </div>
+              </div>
+              {/* Feature 2 */}
+              <div className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-white/60 backdrop-blur-sm border border-border shadow-sm">
+                <span className="h-7 w-7 rounded-full bg-brand-blue-soft text-brand-blue flex items-center justify-center shrink-0">
+                  <ShieldCheck className="h-4 w-4" />
                 </span>
-                <span className="flex flex-col items-start leading-tight">
-                  <span>Call now</span>
-                  <span className="text-[10px] sm:text-[11px] font-normal text-muted-foreground">99853 56507</span>
+                <div className="text-left leading-none">
+                  <div className="text-xs font-bold text-foreground">Safe & Trusted</div>
+                  <div className="text-[9px] text-muted-foreground font-semibold mt-0.5">Hygienic Care</div>
+                </div>
+              </div>
+              {/* Feature 3 */}
+              <div className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-white/60 backdrop-blur-sm border border-border shadow-sm">
+                <span className="h-7 w-7 rounded-full bg-brand-pink-soft text-brand-pink flex items-center justify-center shrink-0">
+                  <Heart className="h-4 w-4" />
                 </span>
-              </a>
+                <div className="text-left leading-none">
+                  <div className="text-xs font-bold text-foreground">Loved by Pets</div>
+                  <div className="text-[9px] text-muted-foreground font-semibold mt-0.5">Happy Families</div>
+                </div>
+              </div>
             </div>
 
-            {/* Trust icons */}
-            <div className="mt-8 grid grid-cols-4 gap-3 max-w-xs sm:max-w-sm mx-auto lg:mx-0">
-              {[
-                { Icon: Clock, label: "24/7", sub: "Support" },
-                { Icon: HomeIcon, label: "Home", sub: "Visits" },
-                { Icon: ShieldCheck, label: "Safe &", sub: "Trusted" },
-                { Icon: Heart, label: "Pet First", sub: "Approach" },
-              ].map(({ Icon, label, sub }) => (
-                <div key={label} className="text-center">
-                  <div className="mx-auto h-10 w-10 sm:h-12 sm:w-12 grid place-items-center rounded-2xl bg-white shadow-soft ring-1 ring-border">
-                    <Icon className="h-4 w-4 sm:h-5 sm:w-5 text-brand-blue" />
-                  </div>
-                  <div className="mt-1.5 text-[11px] sm:text-sm font-semibold text-foreground">{label}</div>
-                  <div className="text-[10px] sm:text-xs text-muted-foreground">{sub}</div>
+            {/* Call To Action Buttons */}
+            <div className="mt-8 flex flex-wrap justify-center lg:justify-start gap-4">
+              {/* Book a visit button */}
+              <Link
+                to="/contact"
+                className="group flex items-center gap-4 bg-brand-blue text-white rounded-2xl p-4 sm:px-6 sm:py-4 hover:scale-[1.02] active:scale-[0.98] transition shadow-md text-left"
+              >
+                <div className="h-10 w-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
+                  <Calendar className="h-5.5 w-5.5 text-white" />
                 </div>
-              ))}
+                <div className="leading-tight">
+                  <div className="text-sm sm:text-base font-bold">Book a Home Visit</div>
+                  <div className="text-[10px] sm:text-xs text-white/80 font-normal mt-0.5">It takes less than 1 minute</div>
+                </div>
+              </Link>
+
+              {/* Chat on WhatsApp */}
+              <a
+                href="https://wa.me/919985356507?text=Hi,%20we%20need%20the%20services"
+                target="_blank" rel="noopener noreferrer"
+                className="group flex items-center gap-4 bg-white border border-whatsapp/40 text-whatsapp hover:bg-whatsapp/5 rounded-2xl p-4 sm:px-6 sm:py-4 hover:scale-[1.02] active:scale-[0.98] transition shadow-md text-left"
+              >
+                <div className="h-10 w-10 rounded-xl bg-whatsapp/10 flex items-center justify-center shrink-0">
+                  <WhatsAppIcon className="h-5.5 w-5.5 text-whatsapp" />
+                </div>
+                <div className="leading-tight">
+                  <div className="text-sm sm:text-base font-bold text-foreground">Chat on WhatsApp</div>
+                  <div className="text-[10px] sm:text-xs text-muted-foreground font-normal mt-0.5">Quick response</div>
+                </div>
+              </a>
             </div>
           </div>
 
           {/* ── Right: image column ── */}
-          <div className="relative flex justify-center lg:justify-end mt-2 lg:mt-0">
+          <div className="lg:col-span-5 relative flex justify-center lg:justify-end mt-4 lg:mt-0">
             <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-md">
-              <Amoeba variant={3} color="oklch(0.58 0.18 245 / 0.12)" className="absolute inset-0 h-full w-full scale-110 pointer-events-none" />
-              <Amoeba variant={4} color="oklch(0.72 0.17 55 / 0.18)" className="absolute -bottom-8 -right-8 h-52 w-52 pointer-events-none" />
+              {/* Backdrop shape */}
+              <div className="absolute inset-0 bg-brand-green-soft/40 rounded-full filter blur-2xl scale-95 opacity-90 animate-float pointer-events-none" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[280px] w-[280px] sm:h-[350px] sm:w-[350px] lg:h-[400px] lg:w-[400px] bg-brand-green/10 rounded-full pointer-events-none shadow-inner" />
+
+              {/* Pet cutout image */}
               <img
                 src={heroPets}
                 alt="Happy golden retriever and tabby cat"
                 width={1024}
                 height={1024}
-                className="relative z-10 w-full drop-shadow-2xl"
+                className="relative z-10 w-full drop-shadow-2xl hover:scale-[1.01] transition-transform duration-500"
               />
-              {/* Floating badge – shown only on sm+ to avoid overlap on tiny screens */}
-              <div className="hidden sm:flex absolute bottom-4 left-0 lg:-left-6 z-20 items-center gap-3 rounded-3xl bg-white px-4 py-3 shadow-pop ring-1 ring-border max-w-[220px] lg:max-w-[260px]">
-                <div className="h-9 w-9 lg:h-11 lg:w-11 shrink-0 grid place-items-center rounded-2xl bg-brand-blue-soft">
-                  <svg viewBox="0 0 24 24" className="h-5 w-5 lg:h-6 lg:w-6 text-brand-blue" fill="currentColor">
-                    <circle cx="12" cy="14" r="3.5"/><circle cx="6" cy="9" r="2"/><circle cx="18" cy="9" r="2"/>
-                    <circle cx="9" cy="5" r="1.6"/><circle cx="15" cy="5" r="1.6"/>
-                  </svg>
+
+              {/* Floating Social Proof Badge */}
+              <div className="absolute -bottom-2 -left-4 sm:bottom-4 sm:-left-6 z-20 flex items-center gap-3 rounded-full bg-white px-4 py-2.5 sm:px-5 sm:py-3 shadow-pop border border-border/80 max-w-[240px] sm:max-w-[260px]">
+                <div className="flex -space-x-3 shrink-0">
+                  <img src={avatar1} className="h-8 w-8 sm:h-9 sm:w-9 rounded-full border-2 border-white object-cover shadow-sm bg-brand-blue-soft" alt="User avatar" />
+                  <img src={avatar2} className="h-8 w-8 sm:h-9 sm:w-9 rounded-full border-2 border-white object-cover shadow-sm bg-brand-blue-soft" alt="User avatar" />
+                  <img src={avatar3} className="h-8 w-8 sm:h-9 sm:w-9 rounded-full border-2 border-white object-cover shadow-sm bg-brand-blue-soft" alt="User avatar" />
                 </div>
-                <div>
-                  <p className="text-xs font-bold leading-tight">Care that feels like family.</p>
-                  <p className="text-[11px] text-muted-foreground">Right at your doorstep.</p>
+                <div className="text-left leading-tight">
+                  <p className="text-xs sm:text-sm font-black text-foreground">1,000+</p>
+                  <p className="text-[9px] sm:text-[10px] text-muted-foreground font-semibold">Happy Pet Parents</p>
                 </div>
               </div>
             </div>
@@ -187,7 +216,7 @@ function Services() {
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-blue">What we offer</p>
           <h2 className="mt-3 font-display text-3xl sm:text-4xl lg:text-5xl font-black text-balance">Complete care for your companion</h2>
           <div className="mt-4 flex items-center justify-center gap-3 text-muted-foreground">
-            <span className="h-px w-8 sm:w-12 bg-border"/> <span>🐾</span> <span className="h-px w-8 sm:w-12 bg-border"/>
+            <span className="h-px w-8 sm:w-12 bg-border" /> <span>🐾</span> <span className="h-px w-8 sm:w-12 bg-border" />
           </div>
         </div>
 
@@ -195,14 +224,36 @@ function Services() {
           {SERVICES.slice(0, 5).map((s) => {
             const c = colorMap[s.color];
             return (
-              <article key={s.slug} className="group relative rounded-3xl bg-card p-5 sm:p-6 ring-1 ring-border hover:shadow-pop hover:-translate-y-1 transition-all duration-300">
-                <div className={`h-14 w-14 sm:h-16 sm:w-16 rounded-2xl ${c.bg} grid place-items-center ring-4 ${c.ring} group-hover:scale-110 transition`}>
-                  <ServiceIcon name={s.icon} className={`h-7 w-7 sm:h-8 sm:w-8 ${c.text}`} />
+              <article key={s.slug} className="group relative rounded-3xl bg-card p-5 flex flex-col items-center text-center border border-border shadow-soft hover:shadow-pop hover:-translate-y-1 transition-all duration-300">
+                {/* Image & Floating Icon Badge Container */}
+                <div className="relative mb-4 flex justify-center">
+                  <div className="h-32 w-32 sm:h-36 sm:w-36 rounded-full overflow-hidden border-4 border-white shadow-md bg-muted">
+                    <img
+                      src={s.image}
+                      alt={s.title}
+                      className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  {/* Icon Badge overlapping the top-left of the image */}
+                  <div className={`absolute top-0 left-0 h-10 w-10 sm:h-11 sm:w-11 rounded-full ${c.bg} grid place-items-center ring-4 ring-white shadow-md`}>
+                    <ServiceIcon name={s.icon} className={`h-5 w-5 sm:h-5.5 sm:w-5.5 ${c.text}`} />
+                  </div>
                 </div>
-                <h3 className="mt-4 font-display text-lg sm:text-xl font-bold">{s.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
-                <Link to="/services" className={`mt-4 inline-flex h-9 w-9 items-center justify-center rounded-full ${c.bg} ${c.text} group-hover:translate-x-1 transition`}>
-                  <ArrowRight className="h-4 w-4" />
+
+                {/* Title & Description */}
+                <h3 className="font-display text-lg sm:text-xl font-bold text-foreground mt-2">{s.title}</h3>
+                <p className="mt-2 text-xs sm:text-sm text-muted-foreground leading-relaxed flex-grow">{s.desc}</p>
+
+                {/* Button */}
+                <Link
+                  to="/services"
+                  search={{ service: s.slug }}
+                  className={`mt-4 w-full rounded-full border border-current px-4 py-2 flex items-center justify-between text-xs font-semibold transition-all duration-300 ${c.text} hover:bg-current/5`}
+                >
+                  <span>Learn More</span>
+                  <span className="h-6 w-6 rounded-full bg-current flex items-center justify-center shrink-0">
+                    <ArrowRight className="h-3.5 w-3.5 text-white" />
+                  </span>
                 </Link>
               </article>
             );
@@ -221,63 +272,48 @@ function Services() {
 
 function WhyUs() {
   const items = [
-    { Icon: Heart, color: "blue", title: "Loving & Caring", desc: "We treat every pet with love and compassion." },
-    { Icon: ShieldCheck, color: "green", title: "Safe & Trusted", desc: "Your pet's safety and well-being always come first." },
-    { Icon: Clock, color: "orange", title: "Fast Response", desc: "We're ready whenever your pet needs us, day or night." },
-    { Icon: Sparkles, color: "pink", title: "Affordable Plans", desc: "Quality care at prices that are fair and transparent." },
+    { Icon: User, title: "Experienced Vet Doctors", desc: "Qualified and compassionate professionals" },
+    { Icon: HomeIcon, title: "At-Home Convenience", desc: "No travel stress for you or your pet" },
+    { Icon: Leaf, title: "Hygienic & Safe Care", desc: "Sterile equipment and safe medical practices" },
+    { Icon: HeartHandshake, title: "Personalized Attention", desc: "Care tailored to your pet's unique needs" },
   ] as const;
 
   return (
-    <section className="relative py-10 lg:py-12">
+    <section className="relative py-10 lg:py-16">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-[2rem] sm:rounded-[2.5rem] bg-brand-blue-soft/60 px-5 sm:px-10 lg:px-14 py-10 sm:py-14 overflow-hidden">
-          <Amoeba variant={1} color="oklch(0.58 0.18 245 / 0.12)" className="absolute -top-20 -left-20 h-80 w-80 pointer-events-none" />
-          <Amoeba variant={4} color="oklch(0.68 0.16 155 / 0.18)" className="absolute -bottom-20 -right-20 h-80 w-80 pointer-events-none" />
+        <div className="relative rounded-[2.5rem] bg-[#E9F3EC] border border-brand-green/10 p-6 sm:p-8 md:p-10 lg:p-12 overflow-hidden flex flex-col lg:flex-row items-center gap-8 lg:gap-10">
+          {/* Left Column: Vet and Dog Image Card */}
+          <div className="w-full lg:w-[35%] shrink-0 flex justify-center relative z-10">
+            <img
+              src="/why choose us.png"
+              alt="Veterinarian high-fiving a golden retriever"
+              className="w-full max-w-[320px] lg:max-w-none rounded-[2rem] shadow-soft border border-white/50 object-cover"
+              loading="lazy"
+            />
+          </div>
 
-          <div className="relative flex flex-col lg:grid lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-            {/* Text */}
-            <div className="lg:col-span-4 text-center lg:text-left">
-              <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-blue">Why choose us</p>
-              <h2 className="mt-3 font-display text-3xl sm:text-4xl font-black leading-tight">
-                More than just care, <span className="italic text-brand-blue">it's a bond.</span>
-              </h2>
-              <p className="mt-4 text-sm text-muted-foreground max-w-sm mx-auto lg:mx-0">
-                We treat every pet with love, patience and dedication. Your pet's happiness and safety is our top priority.
-              </p>
-              <Link to="/about" className="mt-6 inline-flex items-center gap-2 rounded-full gradient-cta text-white px-5 py-3 text-sm font-semibold shadow-soft">
-                About us <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
+          {/* Right Column: Title and Features */}
+          <div className="w-full lg:w-[65%] text-left relative z-10 py-2">
+            <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-green mb-6 text-center lg:text-left">
+              Why Pet Parents Choose Us
+            </p>
 
-            {/* Dog image – centered, visible on all screens */}
-            <div className="lg:col-span-4 relative flex justify-center order-first lg:order-none">
-              <div className="relative">
-                <Amoeba variant={3} color="oklch(0.58 0.18 245 / 0.25)" className="absolute inset-0 h-full w-full scale-110 animate-float pointer-events-none" />
-                <img
-                  src={dogPortrait}
-                  alt="Happy puppy"
-                  width={1024}
-                  height={1024}
-                  loading="lazy"
-                  className="relative w-44 sm:w-56 lg:w-64 drop-shadow-xl"
-                />
-              </div>
-            </div>
-
-            {/* Feature cards */}
-            <div className="lg:col-span-4 grid grid-cols-2 gap-3 sm:gap-4 w-full">
-              {items.map(({ Icon, color, title, desc }) => {
-                const c = colorMap[color];
-                return (
-                  <div key={title} className="rounded-2xl bg-white p-4 sm:p-5 ring-1 ring-border">
-                    <div className={`h-10 w-10 sm:h-11 sm:w-11 rounded-xl ${c.bg} grid place-items-center`}>
-                      <Icon className={`h-4 w-4 sm:h-5 sm:w-5 ${c.text}`} />
-                    </div>
-                    <h4 className="mt-3 font-bold text-xs sm:text-sm">{title}</h4>
-                    <p className="mt-1 text-[11px] sm:text-xs text-muted-foreground leading-relaxed">{desc}</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-5">
+              {items.map(({ Icon, title, desc }) => (
+                <div key={title} className="text-left flex flex-col">
+                  <div className="flex items-center gap-2">
+                    <span className="h-8 w-8 rounded-full bg-brand-green-soft text-brand-green flex items-center justify-center shrink-0">
+                      <Icon className="h-4.5 w-4.5" />
+                    </span>
+                    <h4 className="font-display text-sm sm:text-base font-bold text-foreground leading-tight">
+                      {title}
+                    </h4>
                   </div>
-                );
-              })}
+                  <p className="mt-2.5 text-xs sm:text-sm text-muted-foreground leading-relaxed pl-10">
+                    {desc}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -286,45 +322,52 @@ function WhyUs() {
   );
 }
 
-function Stats() {
+function StatsHeroBar() {
   const stats = [
-    { num: "500+", label: "Happy pet parents", color: "blue" },
-    { num: "1200+", label: "Pets served", color: "green" },
-    { num: "25+", label: "Areas covered", color: "orange" },
-    { num: "10+", label: "Services offered", color: "pink" },
+    { Icon: Headset, title: "24/7", sub: "Support", color: "blue" },
+    { Icon: PawPattern, title: "1,200+", sub: "Pets Served", color: "orange" },
+    { Icon: Star, title: "4.9", sub: "Rated by Pet Parents", color: "yellow", hasStar: true },
+    { Icon: ShieldCheck, title: "Certified", sub: "Veterinarians", color: "green" },
   ] as const;
 
   return (
-    <section className="py-6">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-white ring-1 ring-border shadow-soft grid grid-cols-2 lg:grid-cols-4 overflow-hidden">
-          {stats.map((s, i) => {
-            const c = colorMap[s.color];
-            const isOdd = i % 2 !== 0;
-            const isBottomRow = i >= 2;
-            return (
-              <div
-                key={s.label}
-                className={[
-                  "p-5 sm:p-6 flex items-center gap-3 sm:gap-4",
-                  isOdd ? "border-l border-border" : "",
-                  isBottomRow ? "border-t border-border lg:border-t-0" : "",
-                  i > 0 && !isOdd ? "lg:border-l lg:border-border" : "",
-                ].join(" ")}
-              >
-                <div className={`h-10 w-10 sm:h-12 sm:w-12 rounded-2xl ${c.bg} grid place-items-center shrink-0`}>
-                  <Star className={`h-4 w-4 sm:h-5 sm:w-5 ${c.text}`} />
-                </div>
-                <div>
-                  <div className="font-display text-2xl sm:text-3xl font-black text-foreground">{s.num}</div>
-                  <div className="text-[11px] sm:text-xs text-muted-foreground leading-tight">{s.label}</div>
-                </div>
+    <div className="relative z-20 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 -mt-8 sm:-mt-12 mb-10 sm:mb-12">
+      <div className="bg-white rounded-3xl border border-border shadow-soft p-5 sm:p-7 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+        {stats.map((s, i) => {
+          const c = colorMap[s.color];
+          const isOdd = i % 2 !== 0;
+          const isBottomRow = i >= 2;
+          return (
+            <div
+              key={s.sub}
+              className={[
+                "flex items-center gap-3 sm:gap-4",
+                isOdd ? "border-l border-border/80 pl-4 sm:pl-6" : "",
+                isBottomRow ? "border-t border-border/80 pt-4 md:border-t-0 md:pt-0" : "",
+                i > 0 && !isOdd ? "md:border-l md:border-border/80 md:pl-6" : "",
+              ].join(" ")}
+            >
+              <div className={`h-10 w-10 sm:h-12 sm:w-12 rounded-2xl ${c.bg} grid place-items-center shrink-0`}>
+                {s.hasStar ? (
+                  <s.Icon className={`h-5 w-5 text-brand-orange fill-brand-orange shrink-0`} />
+                ) : s.color === "orange" ? (
+                  <s.Icon className={`h-5 w-5 ${c.text} fill-current shrink-0`} />
+                ) : (
+                  <s.Icon className={`h-5 w-5 ${c.text} shrink-0`} />
+                )}
               </div>
-            );
-          })}
-        </div>
+              <div className="text-left">
+                <div className="font-display text-lg sm:text-2xl font-black text-foreground leading-none flex items-center gap-1">
+                  {s.title}
+                  {s.hasStar && <span className="text-brand-orange text-sm sm:text-base">★</span>}
+                </div>
+                <div className="text-[10px] sm:text-xs text-muted-foreground font-semibold mt-1 leading-tight">{s.sub}</div>
+              </div>
+            </div>
+          );
+        })}
       </div>
-    </section>
+    </div>
   );
 }
 
@@ -348,7 +391,7 @@ function Testimonials() {
           {items.map((t) => (
             <figure key={t.name} className="relative rounded-3xl bg-white p-5 sm:p-7 ring-1 ring-border shadow-soft">
               <div className="flex gap-0.5 text-brand-yellow">
-                {Array.from({length:5}).map((_,i) => <Star key={i} className="h-3.5 w-3.5 sm:h-4 sm:w-4 fill-current" />)}
+                {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-3.5 w-3.5 sm:h-4 sm:w-4 fill-current" />)}
               </div>
               <blockquote className="mt-4 text-sm leading-relaxed text-foreground">"{t.quote}"</blockquote>
               <figcaption className="mt-5 flex items-center gap-3 pt-4 border-t border-border">
@@ -387,7 +430,7 @@ function Areas() {
                   className={`rounded-full px-3 py-2 text-xs font-medium flex items-center gap-1.5 ${a.startsWith("+") ? "gradient-cta text-white" : "bg-white text-foreground ring-1 ring-border"}`}
                 >
                   <MapPin className="h-3.5 w-3.5 text-brand-green shrink-0" />
-                  <span className="truncate">{a.replace("+ ","")}</span>
+                  <span className="truncate">{a.replace("+ ", "")}</span>
                 </div>
               ))}
             </div>

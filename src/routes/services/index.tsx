@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, CheckCircle2, Phone } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Amoeba } from "@/components/site/Amoeba";
 import { ServiceIcon } from "@/components/site/ServiceIcon";
@@ -7,8 +7,14 @@ import { WhatsAppIcon } from "@/components/site/Header";
 import { SERVICES, colorMap } from "@/data/services";
 import heroPets from "@/assets/hero-pets.png";
 import dogCta from "@/assets/dog-cta.png";
+import { z } from "zod";
 
-export const Route = createFileRoute("/services")({
+const servicesSearchSchema = z.object({
+  service: z.string().optional(),
+});
+
+export const Route = createFileRoute("/services/")({
+  validateSearch: (search) => servicesSearchSchema.parse(search),
   head: () => ({
     meta: [
       { title: "Services — Home Pet Services Hyderabad" },
@@ -21,6 +27,12 @@ export const Route = createFileRoute("/services")({
 });
 
 function ServicesPage() {
+  const { service } = Route.useSearch();
+  const selectedService = service
+    ? SERVICES.find((s) => s.slug === service)
+    : undefined;
+  const displayedServices = selectedService ? [selectedService] : SERVICES;
+
   return (
     <SiteLayout>
       <section className="relative overflow-hidden gradient-hero py-12 lg:py-16">
@@ -30,7 +42,7 @@ function ServicesPage() {
           <div className="lg:col-span-7">
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-blue">Our services</p>
             <h1 className="mt-3 font-display text-4xl sm:text-5xl lg:text-6xl font-black text-balance">Complete veterinary care — <span className="italic text-brand-blue">delivered home</span></h1>
-            <p className="mt-5 text-base sm:text-lg text-muted-foreground max-w-xl">Ten core services covering every stage of your pet's health, from routine wellness to emergency intervention.</p>
+            <p className="mt-5 text-base sm:text-lg text-muted-foreground max-w-xl text-balance">Ten core services covering every stage of your pet's health, from routine wellness to emergency intervention.</p>
           </div>
           <div className="lg:col-span-5 relative flex justify-center">
             <div className="absolute inset-0 grid place-items-center">
@@ -43,21 +55,56 @@ function ServicesPage() {
 
       <section className="py-10 lg:py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {SERVICES.map((s) => {
+          {selectedService && (
+            <div className="mb-8 flex flex-col sm:flex-row sm:items-center justify-between bg-brand-blue-soft border border-brand-blue/20 rounded-3xl p-4 sm:px-6 text-brand-blue font-semibold text-sm animate-fade-in shadow-sm gap-3">
+              <span className="flex items-center gap-2">
+                <span className="h-2.5 w-2.5 rounded-full bg-brand-blue animate-pulse shrink-0" />
+                <span>Showing only <strong>{selectedService.title}</strong> at-home service.</span>
+              </span>
+              <Link
+                to="/services"
+                className="inline-flex items-center justify-center gap-1.5 px-4.5 py-2 rounded-full bg-white text-xs font-bold text-brand-blue hover:bg-brand-blue hover:text-white transition shadow-sm border border-brand-blue/10 shrink-0 self-start sm:self-auto"
+              >
+                View all 10 services
+              </Link>
+            </div>
+          )}
+
+          <div className={displayedServices.length === 1 ? "flex justify-center" : "grid md:grid-cols-2 lg:grid-cols-3 gap-8"}>
+            {displayedServices.map((s) => {
               const c = colorMap[s.color];
               return (
-                <article key={s.slug} className="group relative rounded-3xl bg-card p-7 ring-1 ring-border hover:shadow-pop hover:-translate-y-1 transition-all">
-                  <div className={`h-14 w-14 rounded-2xl ${c.bg} grid place-items-center ring-4 ${c.ring}`}>
-                    <ServiceIcon name={s.icon} className={`h-7 w-7 ${c.text}`} />
+                <article key={s.slug} className={`group relative rounded-3xl bg-card p-6 flex flex-col items-center text-center border border-border shadow-soft hover:shadow-pop hover:-translate-y-1 transition-all duration-300 ${displayedServices.length === 1 ? "w-full max-w-sm" : ""}`}>
+                  {/* Image & Floating Icon Badge Container */}
+                  <div className="relative mb-5 flex justify-center">
+                    <div className="h-44 w-44 sm:h-48 sm:w-48 rounded-full overflow-hidden border-4 border-white shadow-md bg-muted">
+                      <img
+                        src={s.image}
+                        alt={s.title}
+                        className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                    {/* Icon Badge overlapping the top-left of the image */}
+                    <div className={`absolute top-0 left-1 h-12 w-12 rounded-full ${c.bg} grid place-items-center ring-4 ring-white shadow-md`}>
+                      <ServiceIcon name={s.icon} className={`h-5.5 w-5.5 ${c.text}`} />
+                    </div>
                   </div>
-                  <h3 className="mt-5 font-display text-xl font-bold">{s.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
-                  <ul className="mt-4 space-y-1.5 text-xs text-muted-foreground">
-                    <li className="flex gap-2"><CheckCircle2 className={`h-4 w-4 ${c.text} shrink-0`} />At-home appointments</li>
-                    <li className="flex gap-2"><CheckCircle2 className={`h-4 w-4 ${c.text} shrink-0`} />Licensed veterinary care</li>
-                    <li className="flex gap-2"><CheckCircle2 className={`h-4 w-4 ${c.text} shrink-0`} />Transparent pricing</li>
-                  </ul>
+
+                  {/* Title & Description */}
+                  <h3 className="font-display text-xl font-black text-foreground mt-2">{s.title}</h3>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-[250px] flex-grow">{s.desc}</p>
+                  
+                  {/* Button */}
+                  <Link
+                    to="/services/$slug"
+                    params={{ slug: s.slug }}
+                    className={`mt-6 w-full rounded-full border border-current px-5 py-2.5 flex items-center justify-between text-sm font-semibold transition-all duration-300 ${c.text} hover:bg-current/5`}
+                  >
+                    <span>Learn More</span>
+                    <span className="h-7 w-7 rounded-full bg-current flex items-center justify-center shrink-0">
+                      <ArrowRight className="h-4 w-4 text-white" />
+                    </span>
+                  </Link>
                 </article>
               );
             })}
