@@ -44,7 +44,7 @@ export const Route = createFileRoute("/")({
         content:
           "home vet, pet care at home, Hyderabad vet, vaccinations, emergency pet care, deworming, IV therapy",
       },
-      { property: "og:image", content: "https://petshomeservices.com/image.png" },
+      { property: "og:image", content: "https://www.petshomeservices.com/image.png" },
       { property: "og:title", content: "Home Pet Services — Veterinary Care at Home in Hyderabad" },
       {
         property: "og:description",
@@ -60,9 +60,9 @@ export const Route = createFileRoute("/")({
         content:
           "Compassionate home veterinary care in Hyderabad: vaccinations, emergency visits, deworming, IV therapy and post-op care delivered to your doorstep.",
       },
-      { name: "twitter:image", content: "https://petshomeservices.com/image.png" },
+      { name: "twitter:image", content: "https://www.petshomeservices.com/image.png" },
     ],
-    links: [{ rel: "canonical", href: "https://petshomeservices.com/" }],
+    links: [{ rel: "canonical", href: "https://www.petshomeservices.com/" }],
   }),
   component: HomePage,
 });

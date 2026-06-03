@@ -19,7 +19,7 @@ export const Route = createFileRoute("/contact")({
         name: "keywords",
         content: "contact, home pet services, book a visit, WhatsApp, Hyderabad vet",
       },
-      { property: "og:image", content: "https://petshomeservices.com/image.png" },
+      { property: "og:image", content: "https://www.petshomeservices.com/image.png" },
       { property: "og:title", content: "Contact Home Pet Services" },
       {
         property: "og:description",
@@ -31,9 +31,9 @@ export const Route = createFileRoute("/contact")({
         content:
           "Get in touch for home veterinary visits across Hyderabad. WhatsApp, phone, or contact form — we respond quickly.",
       },
-      { name: "twitter:image", content: "https://petshomeservices.com/image.png" },
+      { name: "twitter:image", content: "https://www.petshomeservices.com/image.png" },
     ],
-    links: [{ rel: "canonical", href: "https://petshomeservices.com/contact" }],
+    links: [{ rel: "canonical", href: "https://www.petshomeservices.com/contact" }],
   }),
   component: ContactPage,
 });

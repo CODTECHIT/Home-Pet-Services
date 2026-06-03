@@ -89,7 +89,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "home veterinary services, pet care, Hyderabad, home pet services, vaccinations, emergency vet, IV therapy, deworming, post-op care",
       },
-      { property: "og:image", content: "https://petshomeservices.com/image.png" },
+      { property: "og:image", content: "https://www.petshomeservices.com/image.png" },
       { property: "og:title", content: "Home Pet Services — Hyderabad" },
       { property: "og:description", content: "Compassionate pet care at home across Hyderabad." },
       { property: "og:type", content: "website" },
@@ -103,10 +103,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Trusted home veterinary services in Hyderabad: vaccinations, emergencies, IV therapy, post-op and more.",
       },
-      { name: "twitter:image", content: "https://petshomeservices.com/image.png" },
+      { name: "twitter:image", content: "https://www.petshomeservices.com/image.png" },
     ],
     links: [
-      { rel: "canonical", href: "https://petshomeservices.com/" },
+      { rel: "canonical", href: "https://www.petshomeservices.com/" },
       {
         rel: "icon",
         type: "image/png",
@@ -147,8 +147,8 @@ function RootShell({ children }: { children: ReactNode }) {
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "Home Pet Services",
-              url: "https://petshomeservices.com",
-              logo: "https://petshomeservices.com/favicon.png",
+              url: "https://www.petshomeservices.com",
+              logo: "https://www.petshomeservices.com/favicon.png",
               contactPoint: [
                 {
                   "@type": "ContactPoint",

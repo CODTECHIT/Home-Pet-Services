@@ -17,7 +17,7 @@ export const Route = createFileRoute("/about")({
         content:
           "about us, home pet services Hyderabad, veterinary team, compassionate vet, home visits",
       },
-      { property: "og:image", content: "https://petshomeservices.com/why%20choose%20us.png" },
+      { property: "og:image", content: "https://www.petshomeservices.com/why%20choose%20us.png" },
       { property: "og:title", content: "About Home Pet Services" },
       {
         property: "og:description",
@@ -30,9 +30,9 @@ export const Route = createFileRoute("/about")({
         content:
           "Learn about the team bringing safe, reliable, compassionate pet care to homes across Hyderabad.",
       },
-      { name: "twitter:image", content: "https://petshomeservices.com/why%20choose%20us.png" },
+      { name: "twitter:image", content: "https://www.petshomeservices.com/why%20choose%20us.png" },
     ],
-    links: [{ rel: "canonical", href: "https://petshomeservices.com/about" }],
+    links: [{ rel: "canonical", href: "https://www.petshomeservices.com/about" }],
   }),
   component: AboutPage,
 });

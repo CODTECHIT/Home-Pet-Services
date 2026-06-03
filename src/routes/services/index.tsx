@@ -32,16 +32,16 @@ export const Route = createFileRoute("/services/")({
         property: "og:description",
         content: "Our complete menu of veterinary services delivered at your doorstep.",
       },
-      { property: "og:image", content: "https://petshomeservices.com/image.png" },
+      { property: "og:image", content: "https://www.petshomeservices.com/image.png" },
       { name: "twitter:title", content: "Services — Home Pet Services Hyderabad" },
       {
         name: "twitter:description",
         content:
           "Vaccinations, emergency care, deworming, IV therapy, post-op care, blood work and more — all delivered to your home in Hyderabad.",
       },
-      { name: "twitter:image", content: "https://petshomeservices.com/image.png" },
+      { name: "twitter:image", content: "https://www.petshomeservices.com/image.png" },
     ],
-    links: [{ rel: "canonical", href: "https://petshomeservices.com/services" }],
+    links: [{ rel: "canonical", href: "https://www.petshomeservices.com/services" }],
   }),
   component: ServicesPage,
 });

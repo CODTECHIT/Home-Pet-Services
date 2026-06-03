@@ -11,8 +11,8 @@ export const Route = createFileRoute("/services/$slug")({
   head: ({ params }) => {
     const service = SERVICES.find((s) => s.slug === params.slug);
     const image = service?.image
-      ? `https://petshomeservices.com${service.image}`
-      : "https://petshomeservices.com/image.png";
+      ? `https://www.petshomeservices.com${service.image}`
+      : "https://www.petshomeservices.com/image.png";
     return {
       meta: [
         { title: `${service?.title ?? "Service"} — Home Pet Services Hyderabad` },
@@ -31,7 +31,9 @@ export const Route = createFileRoute("/services/$slug")({
         { name: "twitter:description", content: service?.desc ?? "Pet care service" },
         { name: "twitter:image", content: image },
       ],
-      links: [{ rel: "canonical", href: `https://petshomeservices.com/services/${params.slug}` }],
+      links: [
+        { rel: "canonical", href: `https://www.petshomeservices.com/services/${params.slug}` },
+      ],
     };
   },
   component: ServiceDetailPage,
