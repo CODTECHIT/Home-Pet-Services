@@ -74,14 +74,35 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Home Pet Services — Veterinary Care at Home in Hyderabad" },
-      { name: "description", content: "Trusted home veterinary services in Hyderabad: vaccinations, emergencies, IV therapy, post-op and more. Compassionate care delivered to your doorstep." },
+      {
+        name: "description",
+        content:
+          "Trusted home veterinary services in Hyderabad: vaccinations, emergencies, IV therapy, post-op and more. Compassionate care delivered to your doorstep.",
+      },
       { name: "author", content: "Home Pet Services" },
+      {
+        name: "keywords",
+        content:
+          "home veterinary services, pet care, Hyderabad, home pet services, vaccinations, emergency vet, IV therapy, deworming, post-op care",
+      },
+      { property: "og:image", content: "https://petshomeservices.com/image.png" },
       { property: "og:title", content: "Home Pet Services — Hyderabad" },
       { property: "og:description", content: "Compassionate pet care at home across Hyderabad." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      {
+        name: "twitter:title",
+        content: "Home Pet Services — Veterinary Care at Home in Hyderabad",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Trusted home veterinary services in Hyderabad: vaccinations, emergencies, IV therapy, post-op and more.",
+      },
+      { name: "twitter:image", content: "https://petshomeservices.com/image.png" },
     ],
     links: [
+      { rel: "canonical", href: "https://petshomeservices.com/" },
       {
         rel: "icon",
         type: "image/png",
@@ -104,6 +125,26 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Home Pet Services",
+              url: "https://petshomeservices.com",
+              logo: "https://petshomeservices.com/favicon.png",
+              contactPoint: [
+                {
+                  "@type": "ContactPoint",
+                  telephone: "+919985356507",
+                  contactType: "customer service",
+                  areaServed: "IN",
+                },
+              ],
+            }),
+          }}
+        />
       </head>
       <body>
         {children}

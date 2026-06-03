@@ -1,5 +1,22 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Phone, ArrowRight, Clock, ShieldCheck, Heart, Home as HomeIcon, Sparkles, Star, MapPin, CheckCircle2, Calendar, Stethoscope, Headset, User, Leaf, HeartHandshake } from "lucide-react";
+import {
+  Phone,
+  ArrowRight,
+  Clock,
+  ShieldCheck,
+  Heart,
+  Home as HomeIcon,
+  Sparkles,
+  Star,
+  MapPin,
+  CheckCircle2,
+  Calendar,
+  Stethoscope,
+  Headset,
+  User,
+  Leaf,
+  HeartHandshake,
+} from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Amoeba, PawPattern } from "@/components/site/Amoeba";
 import { WhatsAppIcon } from "@/components/site/Header";
@@ -17,15 +34,57 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Home Pet Services — Trusted Veterinary Care at Home in Hyderabad" },
-      { name: "description", content: "Compassionate home veterinary care in Hyderabad: vaccinations, emergency visits, deworming, IV therapy and post-op care delivered to your doorstep." },
+      {
+        name: "description",
+        content:
+          "Compassionate home veterinary care in Hyderabad: vaccinations, emergency visits, deworming, IV therapy and post-op care delivered to your doorstep.",
+      },
+      {
+        name: "keywords",
+        content:
+          "home vet, pet care at home, Hyderabad vet, vaccinations, emergency pet care, deworming, IV therapy",
+      },
+      { property: "og:image", content: "https://petshomeservices.com/image.png" },
       { property: "og:title", content: "Home Pet Services — Veterinary Care at Home in Hyderabad" },
-      { property: "og:description", content: "Trusted pet home services across Hyderabad. Vaccinations, emergencies, IV therapy and more — by caring professionals." },
+      {
+        property: "og:description",
+        content:
+          "Trusted pet home services across Hyderabad. Vaccinations, emergencies, IV therapy and more — by caring professionals.",
+      },
+      {
+        name: "twitter:title",
+        content: "Home Pet Services — Trusted Veterinary Care at Home in Hyderabad",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Compassionate home veterinary care in Hyderabad: vaccinations, emergency visits, deworming, IV therapy and post-op care delivered to your doorstep.",
+      },
+      { name: "twitter:image", content: "https://petshomeservices.com/image.png" },
     ],
+    links: [{ rel: "canonical", href: "https://petshomeservices.com/" }],
   }),
   component: HomePage,
 });
 
-const AREAS = ["Jubilee Hills", "Banjara Hills", "Gachibowli", "Financial District", "Kondapur", "Madhapur", "Manikonda", "Kokapet", "Nallagandla", "Tellapur", "Hitech City", "Kukatpally", "Miyapur", "Begumpet", "Secunderabad", "+ All over Hyderabad"];
+const AREAS = [
+  "Jubilee Hills",
+  "Banjara Hills",
+  "Gachibowli",
+  "Financial District",
+  "Kondapur",
+  "Madhapur",
+  "Manikonda",
+  "Kokapet",
+  "Nallagandla",
+  "Tellapur",
+  "Hitech City",
+  "Kukatpally",
+  "Miyapur",
+  "Begumpet",
+  "Secunderabad",
+  "+ All over Hyderabad",
+];
 
 function HomePage() {
   return (
@@ -46,14 +105,21 @@ function Hero() {
   return (
     <section className="relative overflow-hidden gradient-hero pb-12 sm:pb-16 lg:pb-20">
       {/* Decorative blobs – clipped so they don't overflow on mobile */}
-      <Amoeba variant={1} color="oklch(0.85 0.14 90 / 0.35)" className="absolute -top-20 -left-24 h-72 w-72 sm:h-[420px] sm:w-[420px] lg:h-[520px] lg:w-[520px] animate-spin-slow pointer-events-none" />
-      <Amoeba variant={2} color="oklch(0.68 0.16 155 / 0.15)" className="absolute top-32 -right-24 h-64 w-64 sm:h-[360px] sm:w-[360px] lg:h-[460px] lg:w-[460px] pointer-events-none" />
+      <Amoeba
+        variant={1}
+        color="oklch(0.85 0.14 90 / 0.35)"
+        className="absolute -top-20 -left-24 h-72 w-72 sm:h-[420px] sm:w-[420px] lg:h-[520px] lg:w-[520px] animate-spin-slow pointer-events-none"
+      />
+      <Amoeba
+        variant={2}
+        color="oklch(0.68 0.16 155 / 0.15)"
+        className="absolute top-32 -right-24 h-64 w-64 sm:h-[360px] sm:w-[360px] lg:h-[460px] lg:w-[460px] pointer-events-none"
+      />
       <PawPattern className="absolute top-8 right-1/3 h-8 w-8 text-brand-blue/20 rotate-12 pointer-events-none" />
       <PawPattern className="absolute bottom-16 left-1/4 h-6 w-6 text-brand-orange/30 -rotate-12 pointer-events-none" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8 pb-10 sm:pt-10 sm:pb-14 lg:pt-14 lg:pb-16">
         <div className="grid lg:grid-cols-12 gap-6 lg:gap-4 items-center">
-
           {/* ── Left: text column ── */}
           <div className="lg:col-span-6 text-center lg:text-left">
             {/* Pill Badge */}
@@ -71,7 +137,8 @@ function Hero() {
 
             {/* Description */}
             <p className="mt-5 text-base sm:text-lg text-muted-foreground max-w-lg mx-auto lg:mx-0 leading-relaxed text-balance">
-              Vaccinations, emergencies, deworming, IV therapy and post-operative care — delivered with love and expertise.
+              Vaccinations, emergencies, deworming, IV therapy and post-operative care — delivered
+              with love and expertise.
             </p>
 
             {/* Features Row */}
@@ -83,7 +150,9 @@ function Hero() {
                 </span>
                 <div className="text-left leading-none">
                   <div className="text-xs font-bold text-foreground">Vet Experts</div>
-                  <div className="text-[9px] text-muted-foreground font-semibold mt-0.5">Certified Team</div>
+                  <div className="text-[9px] text-muted-foreground font-semibold mt-0.5">
+                    Certified Team
+                  </div>
                 </div>
               </div>
               {/* Feature 2 */}
@@ -93,7 +162,9 @@ function Hero() {
                 </span>
                 <div className="text-left leading-none">
                   <div className="text-xs font-bold text-foreground">Safe & Trusted</div>
-                  <div className="text-[9px] text-muted-foreground font-semibold mt-0.5">Hygienic Care</div>
+                  <div className="text-[9px] text-muted-foreground font-semibold mt-0.5">
+                    Hygienic Care
+                  </div>
                 </div>
               </div>
               {/* Feature 3 */}
@@ -103,7 +174,9 @@ function Hero() {
                 </span>
                 <div className="text-left leading-none">
                   <div className="text-xs font-bold text-foreground">Loved by Pets</div>
-                  <div className="text-[9px] text-muted-foreground font-semibold mt-0.5">Happy Families</div>
+                  <div className="text-[9px] text-muted-foreground font-semibold mt-0.5">
+                    Happy Families
+                  </div>
                 </div>
               </div>
             </div>
@@ -120,22 +193,29 @@ function Hero() {
                 </div>
                 <div className="leading-tight">
                   <div className="text-sm sm:text-base font-bold">Book a Home Visit</div>
-                  <div className="text-[10px] sm:text-xs text-white/80 font-normal mt-0.5">It takes less than 1 minute</div>
+                  <div className="text-[10px] sm:text-xs text-white/80 font-normal mt-0.5">
+                    It takes less than 1 minute
+                  </div>
                 </div>
               </Link>
 
               {/* Chat on WhatsApp */}
               <a
                 href="https://wa.me/919985356507?text=Hi,%20we%20need%20the%20services"
-                target="_blank" rel="noopener noreferrer"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group flex items-center gap-4 bg-white border border-whatsapp/40 text-whatsapp hover:bg-whatsapp/5 rounded-2xl p-4 sm:px-6 sm:py-4 hover:scale-[1.02] active:scale-[0.98] transition shadow-md text-left"
               >
                 <div className="h-10 w-10 rounded-xl bg-whatsapp/10 flex items-center justify-center shrink-0">
                   <WhatsAppIcon className="h-5.5 w-5.5 text-whatsapp" />
                 </div>
                 <div className="leading-tight">
-                  <div className="text-sm sm:text-base font-bold text-foreground">Chat on WhatsApp</div>
-                  <div className="text-[10px] sm:text-xs text-muted-foreground font-normal mt-0.5">Quick response</div>
+                  <div className="text-sm sm:text-base font-bold text-foreground">
+                    Chat on WhatsApp
+                  </div>
+                  <div className="text-[10px] sm:text-xs text-muted-foreground font-normal mt-0.5">
+                    Quick response
+                  </div>
                 </div>
               </a>
             </div>
@@ -144,17 +224,21 @@ function Hero() {
           {/* ── Right: hero pet group image ── */}
           <div className="lg:col-span-6 relative flex justify-center lg:justify-end mt-4 lg:mt-0 lg:-mr-8">
             <div className="relative w-full max-w-[480px] sm:max-w-[580px] lg:max-w-none lg:w-[115%]">
-
               {/* Main pet group image — already contains all animals + decorations */}
               <img
                 src="/image.png"
                 alt="Golden retriever, tabby cat, rabbit, cockatiel and green parrot together"
+                loading="eager"
+                width={1200}
+                height={800}
                 className="relative z-10 w-full drop-shadow-xl"
               />
 
               {/* ── Exotic Pets badge ── */}
               <div className="absolute bottom-[18%] right-0 z-20 flex items-center gap-2 bg-white rounded-2xl px-3 py-2 shadow-pop border border-border/50 animate-float">
-                <span className="h-8 w-8 rounded-full bg-brand-green-soft flex items-center justify-center shrink-0 text-base leading-none">🐾</span>
+                <span className="h-8 w-8 rounded-full bg-brand-green-soft flex items-center justify-center shrink-0 text-base leading-none">
+                  🐾
+                </span>
                 <div className="text-left leading-tight">
                   <p className="text-[9px] text-muted-foreground font-medium">Now caring for</p>
                   <p className="text-sm font-black text-brand-green">Exotic Pets Too!</p>
@@ -164,18 +248,40 @@ function Hero() {
               {/* ── Social proof badge ── */}
               <div className="absolute bottom-4 left-0 z-20 flex items-center gap-3 rounded-full bg-white px-4 py-2.5 shadow-pop border border-border/80 max-w-[230px]">
                 <div className="flex -space-x-3 shrink-0">
-                  <img src={avatar1} className="h-8 w-8 rounded-full border-2 border-white object-cover shadow-sm bg-brand-blue-soft" alt="User avatar" />
-                  <img src={avatar2} className="h-8 w-8 rounded-full border-2 border-white object-cover shadow-sm bg-brand-blue-soft" alt="User avatar" />
-                  <img src={avatar3} className="h-8 w-8 rounded-full border-2 border-white object-cover shadow-sm bg-brand-blue-soft" alt="User avatar" />
+                  <img
+                    src={avatar1}
+                    loading="lazy"
+                    width={32}
+                    height={32}
+                    className="h-8 w-8 rounded-full border-2 border-white object-cover shadow-sm bg-brand-blue-soft"
+                    alt="User avatar"
+                  />
+                  <img
+                    src={avatar2}
+                    loading="lazy"
+                    width={32}
+                    height={32}
+                    className="h-8 w-8 rounded-full border-2 border-white object-cover shadow-sm bg-brand-blue-soft"
+                    alt="User avatar"
+                  />
+                  <img
+                    src={avatar3}
+                    loading="lazy"
+                    width={32}
+                    height={32}
+                    className="h-8 w-8 rounded-full border-2 border-white object-cover shadow-sm bg-brand-blue-soft"
+                    alt="User avatar"
+                  />
                 </div>
                 <div className="text-left leading-tight">
                   <p className="text-xs font-black text-foreground">1,000+</p>
-                  <p className="text-[10px] text-muted-foreground font-semibold">Happy Pet Parents</p>
+                  <p className="text-[10px] text-muted-foreground font-semibold">
+                    Happy Pet Parents
+                  </p>
                 </div>
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -217,10 +323,15 @@ function Services() {
     <section className="relative py-12 lg:py-16">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto">
-          <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-blue">What we offer</p>
-          <h2 className="mt-3 font-display text-3xl sm:text-4xl lg:text-5xl font-black text-balance">Complete care for your companion</h2>
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-blue">
+            What we offer
+          </p>
+          <h2 className="mt-3 font-display text-3xl sm:text-4xl lg:text-5xl font-black text-balance">
+            Complete care for your companion
+          </h2>
           <div className="mt-4 flex items-center justify-center gap-3 text-muted-foreground">
-            <span className="h-px w-8 sm:w-12 bg-border" /> <span>🐾</span> <span className="h-px w-8 sm:w-12 bg-border" />
+            <span className="h-px w-8 sm:w-12 bg-border" /> <span>🐾</span>{" "}
+            <span className="h-px w-8 sm:w-12 bg-border" />
           </div>
         </div>
 
@@ -228,7 +339,10 @@ function Services() {
           {SERVICES.slice(0, 5).map((s) => {
             const c = colorMap[s.color];
             return (
-              <article key={s.slug} className="group relative rounded-3xl bg-card p-6 sm:p-7 flex flex-col items-center text-center border border-border shadow-soft hover:shadow-pop hover:-translate-y-1 transition-all duration-300">
+              <article
+                key={s.slug}
+                className="group relative rounded-3xl bg-card p-6 sm:p-7 flex flex-col items-center text-center border border-border shadow-soft hover:shadow-pop hover:-translate-y-1 transition-all duration-300"
+              >
                 {/* Image & Floating Icon Badge Container */}
                 <div className="mb-4 flex justify-center">
                   <div className="relative">
@@ -236,27 +350,42 @@ function Services() {
                       <img
                         src={s.image}
                         alt={s.title}
+                        loading="lazy"
+                        width={128}
+                        height={128}
                         className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     </div>
                     {/* Icon Badge overlapping the top-left of the image */}
-                    <div className={`absolute top-0 left-0 h-10 w-10 sm:h-11 sm:w-11 rounded-full ${c.bg} grid place-items-center ring-4 ring-white shadow-md`}>
-                      <ServiceIcon name={s.icon} className={`h-5 w-5 sm:h-5.5 sm:w-5.5 ${c.text}`} />
+                    <div
+                      className={`absolute top-0 left-0 h-10 w-10 sm:h-11 sm:w-11 rounded-full ${c.bg} grid place-items-center ring-4 ring-white shadow-md`}
+                    >
+                      <ServiceIcon
+                        name={s.icon}
+                        className={`h-5 w-5 sm:h-5.5 sm:w-5.5 ${c.text}`}
+                      />
                     </div>
                   </div>
                 </div>
 
                 {/* Title & Description */}
-                <h3 className="font-display text-lg sm:text-xl font-bold text-foreground mt-0">{s.title}</h3>
-                <p className="mt-2 text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-[240px]">{s.desc}</p>
+                <h3 className="font-display text-lg sm:text-xl font-bold text-foreground mt-0">
+                  {s.title}
+                </h3>
+                <p className="mt-2 text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-[240px]">
+                  {s.desc}
+                </p>
 
                 {/* Button */}
                 <a
                   href={`https://wa.me/919985356507?text=${encodeURIComponent(`Hi, I want to book the ${s.title} service for my pet.`)}`}
-                  target="_blank" rel="noopener noreferrer"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="mt-auto pt-5 w-full block"
                 >
-                  <span className={`flex w-full items-center justify-center gap-2 rounded-full border border-current py-2.5 text-xs font-semibold transition-all duration-300 ${c.text} hover:bg-current/5`}>
+                  <span
+                    className={`flex w-full items-center justify-center gap-2 rounded-full border border-current py-2.5 text-xs font-semibold transition-all duration-300 ${c.text} hover:bg-current/5`}
+                  >
                     <WhatsAppIcon className="h-4 w-4 fill-current" />
                     <span>Contact</span>
                   </span>
@@ -267,7 +396,10 @@ function Services() {
         </div>
 
         <div className="mt-8 sm:mt-10 text-center">
-          <Link to="/services" className="inline-flex items-center gap-2 rounded-full bg-white ring-1 ring-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-brand-blue-soft hover:text-brand-blue transition">
+          <Link
+            to="/services"
+            className="inline-flex items-center gap-2 rounded-full bg-white ring-1 ring-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-brand-blue-soft hover:text-brand-blue transition"
+          >
             View all services <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
@@ -278,10 +410,22 @@ function Services() {
 
 function WhyUs() {
   const items = [
-    { Icon: User, title: "Experienced Vet Doctors", desc: "Qualified and compassionate professionals" },
+    {
+      Icon: User,
+      title: "Experienced Vet Doctors",
+      desc: "Qualified and compassionate professionals",
+    },
     { Icon: HomeIcon, title: "At-Home Convenience", desc: "No travel stress for you or your pet" },
-    { Icon: Leaf, title: "Hygienic & Safe Care", desc: "Sterile equipment and safe medical practices" },
-    { Icon: HeartHandshake, title: "Personalized Attention", desc: "Care tailored to your pet's unique needs" },
+    {
+      Icon: Leaf,
+      title: "Hygienic & Safe Care",
+      desc: "Sterile equipment and safe medical practices",
+    },
+    {
+      Icon: HeartHandshake,
+      title: "Personalized Attention",
+      desc: "Care tailored to your pet's unique needs",
+    },
   ] as const;
 
   return (
@@ -293,8 +437,10 @@ function WhyUs() {
             <img
               src="/why choose us.png"
               alt="Veterinarian high-fiving a golden retriever"
-              className="w-full max-w-[320px] lg:max-w-none rounded-[2rem] shadow-soft border border-white/50 object-cover"
               loading="lazy"
+              width={320}
+              height={240}
+              className="w-full max-w-[320px] lg:max-w-none rounded-[2rem] shadow-soft border border-white/50 object-cover"
             />
           </div>
 
@@ -353,7 +499,9 @@ function StatsHeroBar() {
                 i > 0 && !isOdd ? "md:border-l md:border-border/80 md:pl-6" : "",
               ].join(" ")}
             >
-              <div className={`h-10 w-10 sm:h-12 sm:w-12 rounded-2xl ${c.bg} grid place-items-center shrink-0`}>
+              <div
+                className={`h-10 w-10 sm:h-12 sm:w-12 rounded-2xl ${c.bg} grid place-items-center shrink-0`}
+              >
                 {s.hasStar ? (
                   <s.Icon className={`h-5 w-5 text-brand-orange fill-brand-orange shrink-0`} />
                 ) : s.color === "orange" ? (
@@ -367,7 +515,9 @@ function StatsHeroBar() {
                   {s.title}
                   {s.hasStar && <span className="text-brand-orange text-sm sm:text-base">★</span>}
                 </div>
-                <div className="text-[10px] sm:text-xs text-muted-foreground font-semibold mt-1 leading-tight">{s.sub}</div>
+                <div className="text-[10px] sm:text-xs text-muted-foreground font-semibold mt-1 leading-tight">
+                  {s.sub}
+                </div>
               </div>
             </div>
           );
@@ -379,29 +529,63 @@ function StatsHeroBar() {
 
 function Testimonials() {
   const items = [
-    { name: "Anjali R.", area: "Madhapur", avatar: avatar1, quote: "Excellent service! My dog is always happy and well cared for. Their team showed up on time and made the whole vaccination process stress-free." },
-    { name: "Rohit S.", area: "Gachibowli", avatar: avatar2, quote: "Very professional and reliable team. They treat pets like family. I called them in the middle of the night for an emergency and they were here within the hour." },
-    { name: "Sneha K.", area: "Kondapur", avatar: avatar3, quote: "Home IV therapy was a lifesaver. My senior dog hates the clinic. Getting expert care at home made all the difference in his recovery." },
+    {
+      name: "Anjali R.",
+      area: "Madhapur",
+      avatar: avatar1,
+      quote:
+        "Excellent service! My dog is always happy and well cared for. Their team showed up on time and made the whole vaccination process stress-free.",
+    },
+    {
+      name: "Rohit S.",
+      area: "Gachibowli",
+      avatar: avatar2,
+      quote:
+        "Very professional and reliable team. They treat pets like family. I called them in the middle of the night for an emergency and they were here within the hour.",
+    },
+    {
+      name: "Sneha K.",
+      area: "Kondapur",
+      avatar: avatar3,
+      quote:
+        "Home IV therapy was a lifesaver. My senior dog hates the clinic. Getting expert care at home made all the difference in his recovery.",
+    },
   ];
 
   return (
     <section className="relative py-12 lg:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto">
-          <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-orange">What pet parents say</p>
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-orange">
+            What pet parents say
+          </p>
           <h2 className="mt-3 font-display text-3xl sm:text-4xl lg:text-5xl font-black">
             Real stories, <span className="italic text-brand-orange">real happiness</span>
           </h2>
         </div>
         <div className="mt-8 sm:mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {items.map((t) => (
-            <figure key={t.name} className="relative rounded-3xl bg-white p-5 sm:p-7 ring-1 ring-border shadow-soft">
+            <figure
+              key={t.name}
+              className="relative rounded-3xl bg-white p-5 sm:p-7 ring-1 ring-border shadow-soft"
+            >
               <div className="flex gap-0.5 text-brand-yellow">
-                {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-3.5 w-3.5 sm:h-4 sm:w-4 fill-current" />)}
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="h-3.5 w-3.5 sm:h-4 sm:w-4 fill-current" />
+                ))}
               </div>
-              <blockquote className="mt-4 text-sm leading-relaxed text-foreground">"{t.quote}"</blockquote>
+              <blockquote className="mt-4 text-sm leading-relaxed text-foreground">
+                "{t.quote}"
+              </blockquote>
               <figcaption className="mt-5 flex items-center gap-3 pt-4 border-t border-border">
-                <img src={t.avatar} alt={t.name} loading="lazy" width={64} height={64} className="h-10 w-10 sm:h-12 sm:w-12 rounded-full object-cover bg-brand-blue-soft shrink-0" />
+                <img
+                  src={t.avatar}
+                  alt={t.name}
+                  loading="lazy"
+                  width={64}
+                  height={64}
+                  className="h-10 w-10 sm:h-12 sm:w-12 rounded-full object-cover bg-brand-blue-soft shrink-0"
+                />
                 <div>
                   <div className="text-sm font-bold">{t.name}</div>
                   <div className="text-xs text-muted-foreground">{t.area}</div>
@@ -420,13 +604,20 @@ function Areas() {
     <section className="py-10 lg:py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-[2rem] sm:rounded-[2.5rem] bg-brand-green-soft/60 overflow-hidden p-6 sm:p-10 lg:p-12">
-          <Amoeba variant={2} color="oklch(0.68 0.16 155 / 0.18)" className="absolute -top-16 -right-16 h-64 w-64 pointer-events-none" />
+          <Amoeba
+            variant={2}
+            color="oklch(0.68 0.16 155 / 0.18)"
+            className="absolute -top-16 -right-16 h-64 w-64 pointer-events-none"
+          />
           <div className="relative flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-10 items-start">
             <div className="lg:col-span-4">
-              <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-green">Serving pet parents across</p>
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-green">
+                Serving pet parents across
+              </p>
               <h2 className="mt-3 font-display text-3xl sm:text-4xl font-black">Hyderabad</h2>
               <p className="mt-3 sm:mt-4 text-sm text-muted-foreground">
-                We proudly serve pet families across the city's most prominent locations — and everywhere in between.
+                We proudly serve pet families across the city's most prominent locations — and
+                everywhere in between.
               </p>
             </div>
             <div className="lg:col-span-8 grid grid-cols-2 min-[380px]:grid-cols-3 sm:grid-cols-3 lg:grid-cols-4 gap-2">
@@ -452,8 +643,16 @@ function FinalCta() {
     <section className="relative pt-4 pb-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] gradient-cta text-white px-5 sm:px-10 lg:px-12 py-8 sm:py-10 lg:py-12">
-          <Amoeba variant={1} color="rgba(255,255,255,0.08)" className="absolute -top-20 -left-20 h-72 w-72 pointer-events-none" />
-          <Amoeba variant={3} color="rgba(255,255,255,0.06)" className="absolute -bottom-20 -right-20 h-80 w-80 pointer-events-none" />
+          <Amoeba
+            variant={1}
+            color="rgba(255,255,255,0.08)"
+            className="absolute -top-20 -left-20 h-72 w-72 pointer-events-none"
+          />
+          <Amoeba
+            variant={3}
+            color="rgba(255,255,255,0.06)"
+            className="absolute -bottom-20 -right-20 h-80 w-80 pointer-events-none"
+          />
 
           {/* Mobile: stacked. Desktop: side-by-side grid */}
           <div className="relative flex flex-col items-center text-center lg:grid lg:grid-cols-12 lg:gap-6 lg:items-center lg:text-left">
@@ -470,9 +669,12 @@ function FinalCta() {
             {/* Heading */}
             <div className="relative lg:col-span-5">
               <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-black leading-tight">
-                Ready to give your pet the <span className="italic text-brand-yellow">best care?</span>
+                Ready to give your pet the{" "}
+                <span className="italic text-brand-yellow">best care?</span>
               </h2>
-              <p className="mt-2 text-sm text-white/85">Book your home visit in under a minute — we'll be there.</p>
+              <p className="mt-2 text-sm text-white/85">
+                Book your home visit in under a minute — we'll be there.
+              </p>
             </div>
 
             {/* Buttons */}
@@ -490,7 +692,9 @@ function FinalCta() {
                 className="rounded-2xl bg-white text-foreground p-4 hover:scale-[1.02] transition shadow-pop"
               >
                 <Phone className="h-5 w-5 mb-2 text-brand-blue" />
-                <div className="text-xs uppercase tracking-widest text-muted-foreground">Call now</div>
+                <div className="text-xs uppercase tracking-widest text-muted-foreground">
+                  Call now
+                </div>
                 <div className="font-display text-lg sm:text-xl font-bold">99853 56507</div>
               </a>
             </div>

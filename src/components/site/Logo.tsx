@@ -3,7 +3,22 @@ import logoImg from "@/assets/logo.png";
 
 export const Logo = ({ compact = false }: { compact?: boolean }) => {
   const triggerEmojiBlast = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const emojis = ["🐶", "🐱", "🐕", "🐈", "🐾", "🐩", "😸", "🐶", "😽", "🐾", "🐈‍⬛", "🐩", "😻", "🐾"];
+    const emojis = [
+      "🐶",
+      "🐱",
+      "🐕",
+      "🐈",
+      "🐾",
+      "🐩",
+      "😸",
+      "🐶",
+      "😽",
+      "🐾",
+      "🐈‍⬛",
+      "🐩",
+      "😻",
+      "🐾",
+    ];
     const container = document.body;
     const rect = e.currentTarget.getBoundingClientRect();
     const startX = rect.left + rect.width / 2 + window.scrollX;
@@ -51,12 +66,19 @@ export const Logo = ({ compact = false }: { compact?: boolean }) => {
       <img
         src={logoImg}
         alt="Home Pet Services Logo"
+        loading="lazy"
+        width={64}
+        height={64}
         className="h-16 sm:h-22 w-auto object-contain transition-transform group-hover:scale-105"
       />
       {!compact && (
         <span className="leading-tight hidden min-[375px]:block">
-          <span className="block font-display text-lg sm:text-xl font-bold text-foreground">Home Pet Services</span>
-          <span className="block text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-brand-blue font-semibold">Care at your doorstep</span>
+          <span className="block font-display text-lg sm:text-xl font-bold text-foreground">
+            Home Pet Services
+          </span>
+          <span className="block text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-brand-blue font-semibold">
+            Care at your doorstep
+          </span>
         </span>
       )}
     </Link>
